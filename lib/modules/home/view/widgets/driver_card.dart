@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:get/get.dart';
 import 'package:safe_trip_driver_app/constants/app_paths.dart';
 import 'package:safe_trip_driver_app/core/app_fonts.dart';
 import 'package:safe_trip_driver_app/core/app_styles.dart';
@@ -93,6 +94,30 @@ class DriverCard extends StatelessWidget {
               ),
             ),
 
+            Divider( color: AppColors.whiteTextColor,),
+            Row(
+              mainAxisAlignment: MainAxisAlignment.spaceBetween,
+              crossAxisAlignment: CrossAxisAlignment.center,
+              children: [
+                Column(
+                  children: [
+                    Icon(Icons.home_filled , color: AppColors.whiteTextColor,),
+                    Text('07:00 AM' , style: regularStyle(AppFontSize.small, AppColors.whiteTextColor, AppFonts.englishFontFamily),),
+                  ]
+                ),
+
+                Icon(Icons.arrow_forward_sharp , color: AppColors.whiteTextColor,),
+                Image.asset(AppAssetsPaths.schoolBusImage , height: 8.h , width: 12.w,),
+                Icon(Icons.arrow_forward_sharp , color: AppColors.whiteTextColor,),
+
+                Column(
+                    children: [
+                      Icon(Icons.school , color: AppColors.whiteTextColor,),
+                      Text('08:15 AM' , style: regularStyle(AppFontSize.small, AppColors.whiteTextColor, AppFonts.englishFontFamily),),
+                    ]
+                ),
+              ],
+            )
 
             // TODO: add Divider here
             // const Divider(
