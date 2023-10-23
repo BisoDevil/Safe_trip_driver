@@ -1,30 +1,31 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:get/get.dart';
+import 'package:shared_preferences/shared_preferences.dart';
+import 'core/constants/app_routes.dart';
+import 'core/theme/app_theme.dart';
 
-import 'core/app_routes.dart';
-import 'core/app_theme.dart';
-
-void main() {
+late final bool isAuth;
+void main() async {
+  WidgetsFlutterBinding.ensureInitialized();
+  SharedPreferences pref = await SharedPreferences.getInstance();
+  isAuth = pref.getBool('isAuth') ?? false ;
   runApp(const MyApp());
 }
-
 class MyApp extends StatelessWidget {
   const MyApp({super.key});
-
-  // This widget is the root of your application.
   @override
-  Widget build(BuildContext context) {
+  build(BuildContext context) {
     SystemChrome.setSystemUIOverlayStyle(SystemUiOverlayStyle.dark.copyWith(
         statusBarColor: Colors.transparent,
-        statusBarIconBrightness:
-        Brightness.dark
+        statusBarIconBrightness: Brightness.dark
     ));
-    return GetMaterialApp(
+
+    return GetMaterialApp (
       debugShowCheckedModeBanner: false,
       title: 'Travel App',
       theme: getAppTheme(),
-      initialRoute: Routes.splashRoute,
+      initialRoute: isAuth ? Routes.homeRoute : Routes.loginRoute,
       getPages: AppRoutes.routes,
     );
   }

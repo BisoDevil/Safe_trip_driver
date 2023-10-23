@@ -1,10 +1,11 @@
 import 'package:flutter/material.dart';
-import 'package:safe_trip_driver_app/core/app_colors.dart';
-import 'package:safe_trip_driver_app/core/app_styles.dart';
+import 'package:safe_trip_driver_app/core/theme/app_colors.dart';
 import 'package:safe_trip_driver_app/modules/home/view/widgets/student_card_button.dart';
 import 'package:safe_trip_driver_app/utils/extensions.dart';
-import '../../../../core/app_fonts.dart';
-import '../../../../core/app_values.dart';
+
+import '../../../../core/theme/app_fonts.dart';
+import '../../../../core/theme/app_styles.dart';
+import '../../../../core/theme/app_values.dart';
 
 class StudentCard extends StatelessWidget {
   final String studentName;
@@ -51,15 +52,17 @@ class StudentCard extends StatelessWidget {
                         Text(
                           studentName ,
                           style: regularStyle(AppFontSize.xLarge, AppColors.darkTextColor, AppFonts.englishFontFamily),
+                          overflow: TextOverflow.ellipsis,
 
                         ),
                         Text(
                           studentPhoneNumber,
                           style: regularStyle(AppFontSize.small, AppColors.darkTextColor, AppFonts.englishFontFamily),
+                          overflow: TextOverflow.ellipsis,
                         ),
                         Text(
                           studentAddress,
-                          style: regularStyle(AppFontSize.medium, AppColors.darkTextColor, AppFonts.englishFontFamily),
+                          style: regularStyle(AppFontSize.small, AppColors.darkTextColor, AppFonts.englishFontFamily),
                           overflow: TextOverflow.ellipsis,
                         ),
                       ],

@@ -1,16 +1,17 @@
 import 'package:flutter/material.dart';
-import 'package:safe_trip_driver_app/core/app_fonts.dart';
-import 'package:safe_trip_driver_app/core/app_styles.dart';
 
-import '../../../../core/app_values.dart';
+import '../../../../core/theme/app_fonts.dart';
+import '../../../../core/theme/app_styles.dart';
+import '../../../../core/theme/app_values.dart';
 
-class CustomButton extends StatelessWidget {
+
+class CustomLoginButton extends StatelessWidget {
   final String buttonTextLabel;
   final Color buttonBackgroundColor;
   final Color labelColor;
   final VoidCallback onClick;
 
-  const CustomButton(
+  const CustomLoginButton(
       {super.key,
         required this.buttonTextLabel,
         required this.buttonBackgroundColor,

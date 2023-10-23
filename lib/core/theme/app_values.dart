@@ -8,8 +8,9 @@ class AppMargins {
 
 class AppPaddings {
   /// main screen padding
-  static const double mainScreenVerticalPadding = 16.0;
+  static const double mainScreenVerticalPadding= 16.0;
   static const double mainScreenHorizontalPadding = 12.0;
+  static const double verticalPaddingBetween = 30.0;
 
   /// input padding
   static const double inputHorizontalContentPadding = 22.0;
