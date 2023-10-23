@@ -1,11 +1,8 @@
-import 'package:flutter/material.dart';
-import 'package:safe_trip_driver_app/core/theme/app_colors.dart';
 import 'package:safe_trip_driver_app/modules/home/view/widgets/student_card_button.dart';
-import 'package:safe_trip_driver_app/utils/extensions.dart';
-
+import 'package:url_launcher/url_launcher.dart';
 import '../../../../core/theme/app_fonts.dart';
 import '../../../../core/theme/app_styles.dart';
-import '../../../../core/theme/app_values.dart';
+import 'package:safe_trip_driver_app/index.dart';
 
 class StudentCard extends StatelessWidget {
   final String studentName;
@@ -72,7 +69,17 @@ class StudentCard extends StatelessWidget {
                 Column(
                   children: [
                     IconButton(
-                      onPressed: (){},
+                      onPressed: () async
+                        {
+                          // TODO: open dialer and call the student
+                          await launchUrl(
+                          Uri(
+                            scheme: 'tel',
+                            path: '+201023668557',
+                          ),
+                          mode: LaunchMode.externalApplication
+                          );
+                        },
                       icon: const Icon(Icons.phone),
                       color: AppColors.primaryColor,
                       style: ButtonStyle(
@@ -80,7 +87,11 @@ class StudentCard extends StatelessWidget {
                       ),
                     ),
                     IconButton(
-                      onPressed: (){},
+                      onPressed: () async {
+                        // TODO: open student location
+                        await launchUrl(Uri.parse('https://maps.app.goo.gl/ZViLAFH24GqqUyVbA?g_st=iw'),
+                            mode: LaunchMode.externalApplication);
+                      },
                       icon: const Icon(Icons.directions),
                       color: AppColors.primaryColor,
                       style: ButtonStyle(
@@ -100,7 +111,7 @@ class StudentCard extends StatelessWidget {
               children: [
                 Expanded(
                   child: StudentCardButton(
-                      buttonTextLabel: 'failure',
+                      buttonTextLabel: AppTranslationKeys.failureButton.tr,
                       buttonBackgroundColor: AppColors.errorColor,
                       labelColor: Colors.white,
                       onClick: (){}
@@ -108,7 +119,7 @@ class StudentCard extends StatelessWidget {
                 ),
                 Expanded(
                   child: StudentCardButton(
-                      buttonTextLabel: 'Picked Up',
+                      buttonTextLabel: AppTranslationKeys.pickedUpButton.tr,
                       buttonBackgroundColor: AppColors.successColor,
                       labelColor: Colors.white,
                       onClick: (){}

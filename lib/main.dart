@@ -1,9 +1,6 @@
-import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
-import 'package:get/get.dart';
-import 'package:shared_preferences/shared_preferences.dart';
-import 'core/constants/app_routes.dart';
-import 'core/theme/app_theme.dart';
+import 'package:safe_trip_driver_app/index.dart';
+import 'package:safe_trip_driver_app/translation/tranlation_controller.dart';
 
 late final bool isAuth;
 void main() async {
@@ -23,10 +20,12 @@ class MyApp extends StatelessWidget {
 
     return GetMaterialApp (
       debugShowCheckedModeBanner: false,
-      title: 'Travel App',
+      title: 'SafeTrip Driver App',
       theme: getAppTheme(),
       initialRoute: isAuth ? Routes.homeRoute : Routes.loginRoute,
       getPages: AppRoutes.routes,
+      locale: Get.deviceLocale,
+      translations: TranslationController(),
     );
   }
 }

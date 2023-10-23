@@ -1,11 +1,7 @@
-import 'package:flutter/material.dart';
-import 'package:safe_trip_driver_app/utils/extensions.dart';
-
-import '../../../../core/constants/app_strings.dart';
-import '../../../../core/theme/app_colors.dart';
+import 'package:safe_trip_driver_app/core/constants/app_translation_keys.dart';
 import '../../../../core/theme/app_fonts.dart';
 import '../../../../core/theme/app_styles.dart';
-import '../../../../core/theme/app_values.dart';
+import 'package:safe_trip_driver_app/index.dart';
 
 class WelcomeTitle extends StatelessWidget {
   final String driverName;
@@ -19,12 +15,12 @@ class WelcomeTitle extends StatelessWidget {
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
           Text(
-            '${AppStrings.welcomeTitle} , $driverName',
+            '${AppTranslationKeys.welcomeTitle.tr} , $driverName',
             style: regularStyle(AppFontSize.xLarge, AppColors.darkTextColor , AppFonts.englishFontFamily),
           ),
           SizedBox(height: 2.h),
           Text(
-            AppStrings.welcomeSubTitle,
+            AppTranslationKeys.welcomeSubTitle.tr,
             style: regularStyle(AppFontSize.medium, AppColors.darkTextColor , AppFonts.englishFontFamily),
           )
         ]
