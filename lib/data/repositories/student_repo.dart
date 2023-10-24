@@ -8,11 +8,9 @@ class StudentRepo {
   Map<String, String> headers = {'Accept': 'application/json'};
 
   Future<List<StudentModel>> getStudentsList(int driverId) async {
-    Map<String, dynamic> body = {'driver_id': driverId};
-    http.Response response = await http.post(
+    http.Response response = await http.get(
       Uri.parse(AppEndPoints.getStudentList),
       headers: headers,
-      body: body,
     );
 
     if(response.statusCode == 200){

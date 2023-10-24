@@ -1,12 +1,6 @@
-import 'package:flutter/material.dart';
-import 'package:get/get.dart';
-import 'package:get/get_core/src/get_main.dart';
 import '../../../../core/theme/app_fonts.dart';
 import '../../../../core/theme/app_styles.dart';
-import '../../../../core/theme/app_theme.dart';
-import '../../../../core/theme/app_values.dart';
-import 'package:safe_trip_driver_app/utils/extensions.dart';
-import '../../../../core/theme/app_colors.dart';
+import 'package:safe_trip_driver_app/index.dart';
 
 class DriverCard extends StatelessWidget {
   final String driverFullName;

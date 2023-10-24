@@ -1,3 +1,4 @@
+import 'package:safe_trip_driver_app/data/models/placeholder_model.dart';
 import 'package:safe_trip_driver_app/modules/home/view/widgets/student_card_button.dart';
 import 'package:url_launcher/url_launcher.dart';
 import '../../../../core/theme/app_fonts.dart';
@@ -5,11 +6,10 @@ import '../../../../core/theme/app_styles.dart';
 import 'package:safe_trip_driver_app/index.dart';
 
 class StudentCard extends StatelessWidget {
-  final String studentName;
-  final String studentImage;
-  final String studentPhoneNumber;
-  final String studentAddress;
-  const StudentCard({super.key, required this.studentName, required this.studentPhoneNumber, required this.studentAddress, required this.studentImage});
+  final PlaceholderModel placeholderModel;
+  final Function onPickedUpClicked;
+  final Function onFailureClicked;
+  const StudentCard({super.key, required this.placeholderModel, required this.onPickedUpClicked, required this.onFailureClicked});
 
   @override
   Widget build(BuildContext context) {
@@ -33,7 +33,7 @@ class StudentCard extends StatelessWidget {
                 ClipRRect(
                   borderRadius: BorderRadius.circular(AppRadius.cardBorderRadius),
                   child: Image.network(
-                    studentImage,
+                    'https://placehold.co/600x400/png',
                     width: 16.w,
                     height: 16.w,
                     fit: BoxFit.cover,
@@ -47,18 +47,18 @@ class StudentCard extends StatelessWidget {
                       crossAxisAlignment: CrossAxisAlignment.start,
                       children: [
                         Text(
-                          studentName ,
+                          placeholderModel.name,
                           style: regularStyle(AppFontSize.xLarge, AppColors.darkTextColor, getFontFamilyFromLanguageCode()),
                           overflow: TextOverflow.ellipsis,
 
                         ),
                         Text(
-                          studentPhoneNumber,
+                          placeholderModel.phone,
                           style: regularStyle(AppFontSize.small, AppColors.darkTextColor, getFontFamilyFromLanguageCode()),
                           overflow: TextOverflow.ellipsis,
                         ),
                         Text(
-                          studentAddress,
+                          placeholderModel.website,
                           style: regularStyle(AppFontSize.small, AppColors.darkTextColor, getFontFamilyFromLanguageCode()),
                           overflow: TextOverflow.ellipsis,
                         ),
@@ -75,7 +75,7 @@ class StudentCard extends StatelessWidget {
                           await launchUrl(
                           Uri(
                             scheme: 'tel',
-                            path: '+201023668557',
+                            path: placeholderModel.phone,
                           ),
                           mode: LaunchMode.externalApplication
                           );
@@ -114,7 +114,9 @@ class StudentCard extends StatelessWidget {
                       buttonTextLabel: AppTranslationKeys.failureButton.tr,
                       buttonBackgroundColor: AppColors.errorColor,
                       labelColor: Colors.white,
-                      onClick: (){}
+                      onClick: (){
+                        onFailureClicked();
+                      }
                   ),
                 ),
                 Expanded(
@@ -122,7 +124,9 @@ class StudentCard extends StatelessWidget {
                       buttonTextLabel: AppTranslationKeys.pickedUpButton.tr,
                       buttonBackgroundColor: AppColors.successColor,
                       labelColor: Colors.white,
-                      onClick: (){}
+                      onClick: (){
+                        onPickedUpClicked();
+                      }
                   ),
                 ),
 
