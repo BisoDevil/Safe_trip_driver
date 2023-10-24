@@ -1,12 +1,14 @@
-import 'package:flutter/material.dart';
-import 'app_colors.dart';
 import 'app_fonts.dart';
 import 'app_styles.dart';
-import 'app_values.dart';
+import 'package:safe_trip_driver_app/index.dart';
 
-
-String getFontFamily() {
-  return AppFonts.englishFontFamily;
+String getFontFamilyFromLanguageCode() {
+  String languageCode = Get.deviceLocale!.languageCode;
+  if (languageCode == 'ar') {
+    return AppFonts.arabicFontFamily;
+  } else {
+    return AppFonts.englishFontFamily;
+  }
 }
 
 ThemeData getAppTheme() {
@@ -20,13 +22,14 @@ ThemeData getAppTheme() {
       disabledColor: AppColors.disabledColor,
       scaffoldBackgroundColor: AppColors.scaffoldBackgroundColor,
       splashColor: AppColors.lightPrimaryColor,
-      fontFamily: getFontFamily(),
+  /// font family
+      fontFamily: getFontFamilyFromLanguageCode(),
 
 
       /// app bar theme
       appBarTheme: AppBarTheme(
         centerTitle: false,
-        titleTextStyle: regularStyle(AppFontSize.large, AppColors.darkTextColor , AppFonts.englishFontFamily),
+        titleTextStyle: regularStyle(AppFontSize.large, AppColors.darkTextColor , getFontFamilyFromLanguageCode()),
         color: AppColors.appBarBackgroundColor,
         iconTheme: const IconThemeData(
             color: AppColors.primaryColor,
@@ -39,20 +42,20 @@ ThemeData getAppTheme() {
       // text theme
       textTheme: TextTheme(
         // for main section title
-        titleLarge: boldStyle(AppFontSize.xxxLarge, AppColors.darkTextColor , getFontFamily()),
+        titleLarge: boldStyle(AppFontSize.xxxLarge, AppColors.darkTextColor , getFontFamilyFromLanguageCode()),
         // for subsection title
-        titleMedium: regularStyle(AppFontSize.xxLarge, AppColors.darkTextColor , getFontFamily()),
+        titleMedium: regularStyle(AppFontSize.xxLarge, AppColors.darkTextColor , getFontFamilyFromLanguageCode()),
         // for appbar title
-        titleSmall: regularStyle(AppFontSize.xLarge, AppColors.darkTextColor , getFontFamily()),
+        titleSmall: regularStyle(AppFontSize.xLarge, AppColors.darkTextColor , getFontFamilyFromLanguageCode()),
         // hint text and label under subsections
-        labelLarge: boldStyle(AppFontSize.large, AppColors.lightTextColor , getFontFamily()),
+        labelLarge: boldStyle(AppFontSize.large, AppColors.lightTextColor , getFontFamilyFromLanguageCode()),
         // very small details
-        labelMedium: regularStyle(AppFontSize.large, AppColors.lightTextColor , getFontFamily()),
+        labelMedium: regularStyle(AppFontSize.large, AppColors.lightTextColor , getFontFamilyFromLanguageCode()),
         // for small details
-        labelSmall: boldStyle(AppFontSize.small, AppColors.whiteTextColor , getFontFamily()),
+        labelSmall: boldStyle(AppFontSize.small, AppColors.whiteTextColor , getFontFamilyFromLanguageCode()),
         // for buttons labels
         displayMedium: regularStyle(AppFontSize.xxLarge,
-            AppColors.whiteTextColor , getFontFamily()),
+            AppColors.whiteTextColor , getFontFamilyFromLanguageCode()),
       ),
 
 
@@ -61,7 +64,7 @@ ThemeData getAppTheme() {
         fillColor: Colors.white,
         filled: true,
         contentPadding: const EdgeInsets.symmetric(horizontal: AppPaddings.inputHorizontalContentPadding, vertical: AppPaddings.inputVerticalContentPadding),
-        hintStyle: regularStyle(AppFontSize.small, AppColors.lightTextColor , getFontFamily()),
+        hintStyle: regularStyle(AppFontSize.small, AppColors.lightTextColor , getFontFamilyFromLanguageCode()),
         prefixIconColor: AppColors.primaryColor,
 
         enabledBorder: UnderlineInputBorder(

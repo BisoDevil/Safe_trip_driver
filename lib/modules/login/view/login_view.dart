@@ -2,7 +2,7 @@ import 'package:safe_trip_driver_app/modules/login/view/widgets/custom_login_but
 import 'package:safe_trip_driver_app/core/widgets/custom_text_form_field.dart';
 import 'package:safe_trip_driver_app/index.dart';
 
-class LoginView extends GetView<LoginController>{
+class LoginView extends StatelessWidget {
   const LoginView({super.key});
 
   @override
@@ -16,28 +16,48 @@ class LoginView extends GetView<LoginController>{
             children:[
               Image.asset('assets/images/app_logo.png' , height: 25.h,),
               SizedBox(height: 5.h),
-              CustomTextFormField(
-                hintText: AppTranslationKeys.phoneFieldHint.tr,
-                textEditingController: controller.emailController,
-                isPassword: false,
-                prefixIcon: const Icon(Icons.phone),
+              GetBuilder<LoginController>(
+                builder: (loginController) {
+                  {
+                    return CustomTextFormField(
+                      hintText: AppTranslationKeys.phoneFieldHint.tr,
+                      textEditingController: loginController.phoneController,
+                      isPassword: false,
+                      prefixIcon: const Icon(Icons.phone),
+                      keyboardType: TextInputType.phone,
+                    );
+                  }
+                }
               ),
-              CustomTextFormField(
-                hintText: AppTranslationKeys.passwordFieldHint.tr,
-                textEditingController: controller.passwordController,
-                isPassword: true,
-                prefixIcon: const Icon(Icons.lock),
+              GetBuilder<LoginController>(
+                builder: (loginController){ {
+                  return CustomTextFormField(
+                    hintText: AppTranslationKeys.passwordFieldHint.tr,
+                    textEditingController: loginController.passwordController,
+                    isPassword: loginController.passwordSecure ? true : false,
+                    prefixIcon: const Icon(Icons.lock),
+                    suffixIcon: loginController.passwordSecure
+                        ? InkWell(child: const Icon(Icons.visibility_off) , onTap: (){loginController.changePasswordVisibility();},)
+                        : InkWell(child: const Icon(Icons.visibility) , onTap: (){loginController.changePasswordVisibility();},),
+                    keyboardType: TextInputType.text,
+                  );
+                }}
               ),
               SizedBox(height: 5.h),
 
-              CustomLoginButton(
-                  buttonTextLabel: AppTranslationKeys.loginButton.tr,
-                  buttonBackgroundColor: AppColors.primaryColor,
-                  labelColor: Colors.white,
-                  onClick: (){
-                    controller.onLoginClicked();
+              GetBuilder<LoginController>(
+                builder: (loginController){ {
+                  return CustomLoginButton(
+                      buttonTextLabel: AppTranslationKeys.loginButton.tr,
+                      buttonBackgroundColor: AppColors.primaryColor,
+                      labelColor: Colors.white,
+                      onClick: (){
+                        loginController.onLoginClicked();
+                      }
+                  );
                   }
-              )
+                }
+              ),
             ],
           ),
         ),

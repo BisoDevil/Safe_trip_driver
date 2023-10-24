@@ -48,18 +48,18 @@ class StudentCard extends StatelessWidget {
                       children: [
                         Text(
                           studentName ,
-                          style: regularStyle(AppFontSize.xLarge, AppColors.darkTextColor, AppFonts.englishFontFamily),
+                          style: regularStyle(AppFontSize.xLarge, AppColors.darkTextColor, getFontFamilyFromLanguageCode()),
                           overflow: TextOverflow.ellipsis,
 
                         ),
                         Text(
                           studentPhoneNumber,
-                          style: regularStyle(AppFontSize.small, AppColors.darkTextColor, AppFonts.englishFontFamily),
+                          style: regularStyle(AppFontSize.small, AppColors.darkTextColor, getFontFamilyFromLanguageCode()),
                           overflow: TextOverflow.ellipsis,
                         ),
                         Text(
                           studentAddress,
-                          style: regularStyle(AppFontSize.small, AppColors.darkTextColor, AppFonts.englishFontFamily),
+                          style: regularStyle(AppFontSize.small, AppColors.darkTextColor, getFontFamilyFromLanguageCode()),
                           overflow: TextOverflow.ellipsis,
                         ),
                       ],

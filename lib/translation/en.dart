@@ -10,6 +10,9 @@ Map<String, String> english = {
   AppTranslationKeys.passwordFieldHint : 'Password ... ',
   AppTranslationKeys.loginButton : 'Login',
 
+  AppTranslationKeys.error : 'Error',
+  AppTranslationKeys.errorEmptyFieldMessage : 'Please fill all fields',
+  AppTranslationKeys.loginCredentialsRejectedMessage : 'Credentials Rejected',
   /// Home view
   AppTranslationKeys.welcomeTitle : 'Good Morning',
   AppTranslationKeys.welcomeSubTitle : 'Safe Trip Driver App , Track Your Child\'s School Bus in Real-Time',

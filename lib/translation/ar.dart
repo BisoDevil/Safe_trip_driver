@@ -9,7 +9,9 @@ Map<String, String> arabic = {
   AppTranslationKeys.passwordFieldHint : 'كلمة المرور ... ',
   AppTranslationKeys.loginButton : 'تسجيل الدخول',
 
-
+  AppTranslationKeys.error : 'خطأ',
+  AppTranslationKeys.errorEmptyFieldMessage : 'يرجي ملئ جميع البيانات',
+  AppTranslationKeys.loginCredentialsRejectedMessage : 'بيانات الدخول غير صحيحة',
   /// Home view
 
   AppTranslationKeys.welcomeTitle : 'صباح الخير',

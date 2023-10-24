@@ -7,8 +7,10 @@ class CustomTextFormField extends StatelessWidget {
   final TextEditingController textEditingController;
   final bool isPassword;
   final Widget? suffixIcon;
+  final Color? suffixIconColor;
   final Widget prefixIcon;
-  const CustomTextFormField({super.key, required this.hintText, required this.textEditingController, required this.isPassword, this.suffixIcon, required this.prefixIcon});
+  final TextInputType keyboardType;
+  const CustomTextFormField({super.key, required this.hintText, required this.textEditingController, required this.isPassword, this.suffixIcon, required this.prefixIcon, this.suffixIconColor, required this.keyboardType});
 
   @override
   Widget build(BuildContext context) {
@@ -17,6 +19,7 @@ class CustomTextFormField extends StatelessWidget {
       child: TextFormField(
         controller: textEditingController,
         obscureText: isPassword ? true : false ,
+        keyboardType: keyboardType,
         decoration: InputDecoration(
           hintText: hintText,
           filled: true,
@@ -24,7 +27,7 @@ class CustomTextFormField extends StatelessWidget {
           floatingLabelBehavior: FloatingLabelBehavior.never,
           suffixIcon: suffixIcon,
           prefixIcon: prefixIcon,
-
+          suffixIconColor: suffixIconColor,
         ),
       ),
     );

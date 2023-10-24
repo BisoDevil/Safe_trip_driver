@@ -3,6 +3,7 @@ import 'dart:ui';
 
 class AppFonts {
   static const String englishFontFamily = 'Montserrat';
+  static const String arabicFontFamily = 'Cairo';
 }
 
 

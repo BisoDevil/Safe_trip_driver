@@ -1,5 +1,5 @@
 
-class ExampleException implements Exception {
+class LoginFailed implements Exception {
   final String message;
-  const ExampleException({required this.message});
+  const LoginFailed({required this.message});
 }

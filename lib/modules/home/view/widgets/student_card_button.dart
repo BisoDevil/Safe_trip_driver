@@ -2,6 +2,7 @@
 import 'package:flutter/material.dart';
 import '../../../../core/theme/app_fonts.dart';
 import '../../../../core/theme/app_styles.dart';
+import '../../../../core/theme/app_theme.dart';
 import '../../../../core/theme/app_values.dart';
 
 class StudentCardButton extends StatelessWidget {
@@ -35,7 +36,7 @@ class StudentCardButton extends StatelessWidget {
                 padding: const EdgeInsets.symmetric(vertical: 10),
                 child: Text(
                     buttonTextLabel,
-                    style: regularStyle(AppFontSize.medium, Colors.white, AppFonts.englishFontFamily)
+                    style: regularStyle(AppFontSize.medium, Colors.white, getFontFamilyFromLanguageCode())
                 )
             ),
           ],

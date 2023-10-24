@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import '../../../../core/theme/app_fonts.dart';
 import '../../../../core/theme/app_styles.dart';
+import '../../../../core/theme/app_theme.dart';
 import '../../../../core/theme/app_values.dart';
 import 'package:safe_trip_driver_app/utils/extensions.dart';
 import '../../../../core/theme/app_colors.dart';
@@ -78,17 +79,17 @@ class DriverCard extends StatelessWidget {
                         children: [
                           Text(
                           driverFullName,
-                            style: regularStyle(AppFontSize.xxLarge, AppColors.whiteTextColor, AppFonts.englishFontFamily),
+                            style: regularStyle(AppFontSize.xxLarge, AppColors.whiteTextColor, getFontFamilyFromLanguageCode()),
                             overflow: TextOverflow.ellipsis,
                           ),
                           Text(
                               schoolName,
-                            style: regularStyle(AppFontSize.medium, AppColors.whiteTextColor, AppFonts.englishFontFamily),
+                            style: regularStyle(AppFontSize.medium, AppColors.whiteTextColor, getFontFamilyFromLanguageCode()),
                             overflow: TextOverflow.ellipsis,
                           ),
                           Text(
                             busNumber,
-                            style: regularStyle(AppFontSize.medium, AppColors.whiteTextColor, AppFonts.englishFontFamily),
+                            style: regularStyle(AppFontSize.medium, AppColors.whiteTextColor, getFontFamilyFromLanguageCode()),
                             overflow: TextOverflow.ellipsis,
                           ),
                         ],

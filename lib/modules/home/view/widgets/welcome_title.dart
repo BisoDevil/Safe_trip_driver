@@ -16,12 +16,12 @@ class WelcomeTitle extends StatelessWidget {
         children: [
           Text(
             '${AppTranslationKeys.welcomeTitle.tr} , $driverName',
-            style: regularStyle(AppFontSize.xLarge, AppColors.darkTextColor , AppFonts.englishFontFamily),
+            style: regularStyle(AppFontSize.xLarge, AppColors.darkTextColor , getFontFamilyFromLanguageCode()),
           ),
           SizedBox(height: 2.h),
           Text(
             AppTranslationKeys.welcomeSubTitle.tr,
-            style: regularStyle(AppFontSize.medium, AppColors.darkTextColor , AppFonts.englishFontFamily),
+            style: regularStyle(AppFontSize.medium, AppColors.darkTextColor , getFontFamilyFromLanguageCode()),
           )
         ]
       ),

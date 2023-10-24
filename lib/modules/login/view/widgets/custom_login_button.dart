@@ -1,8 +1,7 @@
-import 'package:flutter/material.dart';
 
+import 'package:safe_trip_driver_app/index.dart';
 import '../../../../core/theme/app_fonts.dart';
 import '../../../../core/theme/app_styles.dart';
-import '../../../../core/theme/app_values.dart';
 
 
 class CustomLoginButton extends StatelessWidget {
@@ -36,7 +35,7 @@ class CustomLoginButton extends StatelessWidget {
                 padding: const EdgeInsets.symmetric(vertical: 10),
                 child: Text(
                     buttonTextLabel,
-                  style: regularStyle(AppFontSize.medium, Colors.white, AppFonts.englishFontFamily)
+                  style: regularStyle(AppFontSize.medium, Colors.white, getFontFamilyFromLanguageCode())
                 )
             ),
           ],
