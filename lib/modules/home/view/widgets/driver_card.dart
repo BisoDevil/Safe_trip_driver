@@ -1,4 +1,6 @@
 import 'package:flutter/material.dart';
+import 'package:get/get.dart';
+import 'package:get/get_core/src/get_main.dart';
 import '../../../../core/theme/app_fonts.dart';
 import '../../../../core/theme/app_styles.dart';
 import '../../../../core/theme/app_theme.dart';
@@ -117,7 +119,10 @@ class DriverCard extends StatelessWidget {
                   Destination(time: tripStartTime, iconData:Icons.home_filled),
 
                   const Icon(Icons.arrow_forward_sharp , color: AppColors.whiteTextColor,),
-                  Image.asset('assets/images/school-bus.png', height: 8.h , width: 12.w,),
+                  Transform.flip(
+                    flipX: (Get.deviceLocale == const Locale('en', 'US')) ? false : true,
+                    child: Image.asset('assets/images/school-bus.png', height: 8.h , width: 12.w, ),
+                  ),
                   const Icon(Icons.arrow_forward_sharp , color: AppColors.whiteTextColor,),
                   Destination(time: tripEndTime, iconData: Icons.school),
                 ],
