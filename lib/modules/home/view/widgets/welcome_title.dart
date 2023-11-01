@@ -1,4 +1,3 @@
-import 'package:safe_trip_driver_app/core/constants/app_translation_keys.dart';
 import '../../../../core/theme/app_fonts.dart';
 import '../../../../core/theme/app_styles.dart';
 import 'package:safe_trip_driver_app/index.dart';

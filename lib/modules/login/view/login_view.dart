@@ -9,6 +9,8 @@ class LoginView extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       body: Center(
+
+
         child: SingleChildScrollView(
           keyboardDismissBehavior: ScrollViewKeyboardDismissBehavior.onDrag,
           scrollDirection: Axis.vertical,
@@ -21,7 +23,7 @@ class LoginView extends StatelessWidget {
                   {
                     return CustomTextFormField(
                       hintText: AppTranslationKeys.phoneFieldHint.tr,
-                      textEditingController: loginController.phoneController,
+                      textEditingController: loginController.mobileController,
                       isPassword: false,
                       prefixIcon: const Icon(Icons.phone),
                       keyboardType: TextInputType.phone,
@@ -45,16 +47,25 @@ class LoginView extends StatelessWidget {
               ),
               SizedBox(height: 5.h),
 
+
               GetBuilder<LoginController>(
                 builder: (loginController){ {
-                  return CustomLoginButton(
-                      buttonTextLabel: AppTranslationKeys.loginButton.tr,
-                      buttonBackgroundColor: AppColors.primaryColor,
-                      labelColor: Colors.white,
-                      onClick: (){
-                        loginController.onLoginClicked();
-                      }
-                  );
+                  if (loginController.loading == false) {
+                    return CustomLoginButton(
+                        buttonTextLabel: AppTranslationKeys.loginButton.tr,
+                        buttonBackgroundColor: AppColors.primaryColor,
+                        labelColor: Colors.white,
+                        onClick: (){
+                          loginController.onLoginClicked();
+                        }
+                    );
+                  }else{
+                    return SizedBox(
+                      height: 6.h,
+                      width: 6.h,
+                      child: const CircularProgressIndicator(strokeWidth: 1.5),
+                    );
+                    }
                   }
                 }
               ),

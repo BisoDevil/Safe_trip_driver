@@ -9,7 +9,7 @@ class StudentRepo {
 
   Future<List<StudentModel>> getStudentsList(int driverId) async {
     http.Response response = await http.get(
-      Uri.parse(AppEndPoints.getStudentList),
+      Uri.parse(AppEndPoints.login),
       headers: headers,
     );
 

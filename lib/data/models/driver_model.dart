@@ -1,43 +1,57 @@
+import 'package:hive_flutter/hive_flutter.dart';
+part 'generated/driver_model.g.dart';
+@HiveType(typeId: 1)
 class DriverModel {
-
-  final int id;
-  final String driverName;
-  final String phoneNumber1;
-  final String phoneNumber2;
+  @HiveField(0)
+  final String name;
+  @HiveField(1)
+  final String code;
+  @HiveField(2)
+  final String mobile;
+  @HiveField(3)
+  final String nationalId;
+  @HiveField(4)
+  final String gander;
+  @HiveField(5)
   final String image;
-  final String password;
+  @HiveField(6)
+  final String type;
+  @HiveField(7)
   final String token;
 
 
   DriverModel({
-    required this.id,
-    required this.driverName,
-    required this.phoneNumber1,
-    required this.phoneNumber2,
+    required this.name,
+    required this.code,
+    required this.mobile,
+    required this.nationalId,
+    required this.gander,
     required this.image,
-    required this.password,
+    required this.type,
     required this.token,
   });
 
   factory DriverModel.fromJson(Map<String, dynamic> json) {
     return DriverModel(
-      id: json['id'],
-      driverName: json['driver_name'],
-      phoneNumber1: json['phone_number1'],
-      phoneNumber2: json['phone_number2'],
+      name: json['name'],
+      code: json['code'],
+      mobile: json['mobile'],
+      nationalId: json['national_id'],
+      gander: json['gander'],
       image: json['image'],
-      password: json['password'],
+      type: json['type'],
       token: json['token'],
     );
   }
 
   Map<String, dynamic> toJson() => {
-    'id': id,
-    'driver_name': driverName,
-    'phone_number1': phoneNumber1,
-    'phone_number2': phoneNumber2,
+    'name': name,
+    'code': code,
+    'mobile': mobile,
+    'national_id': nationalId,
+    'gander': gander,
     'image': image,
-    'password': password,
+    'type': type,
     'token': token,
   };
 

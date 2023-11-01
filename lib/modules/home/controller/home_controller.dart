@@ -1,38 +1,25 @@
-import 'package:get/get.dart';
-import 'package:safe_trip_driver_app/data/repositories/placeholder_repo.dart';
 import 'package:safe_trip_driver_app/data/repositories/student_repo.dart';
-import '../../../data/models/placeholder_model.dart';
+import '../../../data/models/driver_model.dart';
 import '../../../data/models/student_model.dart';
+import '../../../index.dart';
 
 
 class HomeController extends GetxController{
 
-  bool loading = true;
+  bool loading = false;
   List<StudentModel> students = [];
-  List<PlaceholderModel> placeholderList = [];
-  List<PlaceholderModel> pickedUpList = [];
-  List<PlaceholderModel> failureList = [];
+  late DriverModel currentDriver;
+
 
   @override
   void onInit() async {
-    placeholderList = await PlaceholderRepo().getListOfUsers();
+    loading = true;
+    final driverBox = await Hive.openBox<DriverModel>('current_driver_box');
+    currentDriver = driverBox.get('current_driver')!;
     loading = false;
     update();
     super.onInit();
   }
-  // @override
-  // void onInit() async {
-  //   SharedPreferences pref = await SharedPreferences.getInstance();
-  //   int driverId = pref.getInt('driverId') ?? 0;
-  //   if (driverId != 0){
-  //     students = getAllStudents(driverId);
-  //   }else{
-  //     Get.offAllNamed(Routes.loginRoute);
-  //   }
-  //  update();
-  //   super.onInit();
-  // }
-
 
   getAllStudents(int driverId) async {
     StudentRepo().getStudentsList(driverId);
@@ -45,9 +32,6 @@ class HomeController extends GetxController{
       'Done !',
       'PickedUp Successfully ^_^',
     );
-    PlaceholderModel placeholderModel = placeholderList.where((element) => element.id == id).first;
-    placeholderList.remove(placeholderModel);
-    pickedUpList.add(placeholderModel);
     update();
   }
 
@@ -56,9 +40,6 @@ class HomeController extends GetxController{
           'Done !',
           'Failure Successfully ^_^',
         );
-        PlaceholderModel placeholderModel = placeholderList.where((element) => element.id == id).first;
-        placeholderList.remove(placeholderModel);
-        failureList.add(placeholderModel);
     update();
   }
 }

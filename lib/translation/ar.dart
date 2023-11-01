@@ -20,4 +20,20 @@ Map<String, String> arabic = {
 
   AppTranslationKeys.pickedUpButton : 'التقط',
   AppTranslationKeys.failureButton : 'فشل',
+
+
+
+  /// profile view
+  AppTranslationKeys.profileScreenAppBarTitle : 'حـسـابـي',
+  AppTranslationKeys.accountSettingLabel : 'إعدادات الحساب',
+  AppTranslationKeys.personalInfo : 'المعلومات الشخصيه',
+  AppTranslationKeys.preferencesSettingLabel : 'إعدادات التطبيق',
+  AppTranslationKeys.language : 'اللغة',
+  AppTranslationKeys.notifications : 'الإشعارات',
+  AppTranslationKeys.supportSettingLabel : 'الدعم',
+  AppTranslationKeys.contactUs : 'التواصل معنا',
+  AppTranslationKeys.about : 'الدعم',
+  AppTranslationKeys.logout : 'تسجيل الخروج',
+
+
 };

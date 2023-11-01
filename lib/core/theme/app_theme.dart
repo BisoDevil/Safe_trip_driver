@@ -31,9 +31,9 @@ ThemeData getAppTheme() {
         centerTitle: false,
         titleTextStyle: regularStyle(AppFontSize.large, AppColors.darkTextColor , getFontFamilyFromLanguageCode()),
         color: AppColors.appBarBackgroundColor,
-        iconTheme: const IconThemeData(
-            color: AppColors.primaryColor,
-        ),
+        // iconTheme: const IconThemeData(
+        //     color: AppColors.primaryColor,
+        // ),
         actionsIconTheme: const IconThemeData(
           color: AppColors.lightIconColor,
         ),
@@ -99,5 +99,9 @@ ThemeData getAppTheme() {
         space: 48,
       ),
 
+    /// progressIndicatorTheme
+    progressIndicatorTheme: const ProgressIndicatorThemeData(
+      color: AppColors.primaryColor
+    )
    );
 }

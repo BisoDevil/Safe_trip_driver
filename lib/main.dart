@@ -1,12 +1,15 @@
 import 'package:flutter/services.dart';
 import 'package:safe_trip_driver_app/index.dart';
-import 'package:safe_trip_driver_app/translation/tranlation_controller.dart';
+import 'package:safe_trip_driver_app/translation/translation_controller.dart';
+import 'data/models/driver_model.dart';
 
 late final bool isAuth;
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
-  SharedPreferences pref = await SharedPreferences.getInstance();
-  isAuth = pref.getBool('isAuth') ?? false ;
+  await Hive.initFlutter();
+  Hive.registerAdapter(DriverModelAdapter());
+  final currentDriver = await Hive.openBox<DriverModel>('current_driver_box');
+  isAuth = currentDriver.containsKey('current_driver');
   runApp(const MyApp());
 }
 class MyApp extends StatelessWidget {

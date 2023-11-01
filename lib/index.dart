@@ -1,5 +1,5 @@
 export 'package:flutter/material.dart';
-export 'package:shared_preferences/shared_preferences.dart';
+export 'package:hive_flutter/hive_flutter.dart';
 export 'package:get/get.dart';
 export 'package:safe_trip_driver_app/core/theme/app_colors.dart';
 export 'package:safe_trip_driver_app/core/theme/app_theme.dart';

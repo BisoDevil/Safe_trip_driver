@@ -1,15 +1,14 @@
 import 'package:safe_trip_driver_app/index.dart';
-import 'package:url_launcher/url_launcher.dart';
+
 
 import '../../../../core/theme/app_fonts.dart';
 import '../../../../core/theme/app_styles.dart';
-import '../../../../data/models/placeholder_model.dart';
 
 
 class SmallStudentCard extends StatelessWidget {
   final bool pickedUp;
-  final PlaceholderModel placeholderModel;
-  const SmallStudentCard({super.key, required this.placeholderModel, required this.pickedUp});
+  // final PlaceholderModel placeholderModel;
+  const SmallStudentCard({super.key,required this.pickedUp});
 
   @override
   Widget build(BuildContext context) {
@@ -47,7 +46,8 @@ class SmallStudentCard extends StatelessWidget {
                       crossAxisAlignment: CrossAxisAlignment.start,
                       children: [
                         Text(
-                          placeholderModel.name,
+                          "student name",
+                          // placeholderModel.name,
                           style: regularStyle(AppFontSize.xLarge, AppColors.darkTextColor, getFontFamilyFromLanguageCode()),
                           overflow: TextOverflow.ellipsis,
 
@@ -65,16 +65,16 @@ class SmallStudentCard extends StatelessWidget {
                   height: 32,
                   decoration: BoxDecoration(
                     color: pickedUp ? AppColors.successColor : AppColors.errorColor,
-                    borderRadius: BorderRadius.only(
+                    borderRadius: const BorderRadius.only(
                       bottomLeft: Radius.circular(16),
                       bottomRight: Radius.circular(16),
                       topLeft: Radius.circular(16),
                       topRight: Radius.circular(16),
                     ),
                   ),
-                  alignment: AlignmentDirectional(0.00, 0.00),
+                  alignment: const AlignmentDirectional(0.00, 0.00),
                   child: Padding(
-                    padding: EdgeInsetsDirectional.fromSTEB(12, 0, 12, 0),
+                    padding: const EdgeInsetsDirectional.fromSTEB(12, 0, 12, 0),
                     child: Text(
                       'Picked Up',
                       style: regularStyle(AppFontSize.xSmall, AppColors.whiteTextColor, getFontFamilyFromLanguageCode())

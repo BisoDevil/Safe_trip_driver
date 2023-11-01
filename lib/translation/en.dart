@@ -21,4 +21,15 @@ Map<String, String> english = {
   AppTranslationKeys.pickedUpButton : 'Picked Up',
   AppTranslationKeys.failureButton : 'Failure',
 
+  /// profile view
+  AppTranslationKeys.profileScreenAppBarTitle : 'My Profile',
+  AppTranslationKeys.accountSettingLabel : 'Account Setting',
+  AppTranslationKeys.personalInfo : 'Personal Info',
+  AppTranslationKeys.preferencesSettingLabel : 'App Setting',
+  AppTranslationKeys.language : 'Language',
+  AppTranslationKeys.notifications : 'Notifications',
+  AppTranslationKeys.supportSettingLabel : 'Support',
+  AppTranslationKeys.contactUs : 'Contact Us',
+  AppTranslationKeys.about : 'About',
+  AppTranslationKeys.logout : 'Logout',
 };

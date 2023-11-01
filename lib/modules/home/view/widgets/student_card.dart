@@ -1,4 +1,3 @@
-import 'package:safe_trip_driver_app/data/models/placeholder_model.dart';
 import 'package:safe_trip_driver_app/modules/home/view/widgets/student_card_button.dart';
 import 'package:url_launcher/url_launcher.dart';
 import '../../../../core/theme/app_fonts.dart';
@@ -6,10 +5,10 @@ import '../../../../core/theme/app_styles.dart';
 import 'package:safe_trip_driver_app/index.dart';
 
 class StudentCard extends StatelessWidget {
-  final PlaceholderModel placeholderModel;
+  //final PlaceholderModel placeholderModel;
   final Function onPickedUpClicked;
   final Function onFailureClicked;
-  const StudentCard({super.key, required this.placeholderModel, required this.onPickedUpClicked, required this.onFailureClicked});
+  const StudentCard({super.key, required this.onPickedUpClicked, required this.onFailureClicked});
 
   @override
   Widget build(BuildContext context) {
@@ -47,18 +46,21 @@ class StudentCard extends StatelessWidget {
                       crossAxisAlignment: CrossAxisAlignment.start,
                       children: [
                         Text(
-                          placeholderModel.name,
+                          'student name',
+                          // placeholderModel.name,
                           style: regularStyle(AppFontSize.xLarge, AppColors.darkTextColor, getFontFamilyFromLanguageCode()),
                           overflow: TextOverflow.ellipsis,
 
                         ),
                         Text(
-                          placeholderModel.phone,
+                          'student phone',
+                          // placeholderModel.phone,
                           style: regularStyle(AppFontSize.small, AppColors.darkTextColor, getFontFamilyFromLanguageCode()),
                           overflow: TextOverflow.ellipsis,
                         ),
                         Text(
-                          placeholderModel.website,
+                          'student email',
+                          // placeholderModel.website,
                           style: regularStyle(AppFontSize.small, AppColors.darkTextColor, getFontFamilyFromLanguageCode()),
                           overflow: TextOverflow.ellipsis,
                         ),
@@ -75,7 +77,7 @@ class StudentCard extends StatelessWidget {
                           await launchUrl(
                           Uri(
                             scheme: 'tel',
-                            path: placeholderModel.phone,
+                            path: '01023668557',
                           ),
                           mode: LaunchMode.externalApplication
                           );

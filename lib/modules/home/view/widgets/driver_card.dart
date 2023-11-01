@@ -4,11 +4,12 @@ import 'package:safe_trip_driver_app/index.dart';
 
 class DriverCard extends StatelessWidget {
   final String driverFullName;
+  final String driverImage;
   final String schoolName;
   final String busNumber;
   final String tripStartTime;
   final String tripEndTime;
-  const DriverCard({super.key, required this.driverFullName, required this.schoolName, required this.busNumber, required this.tripStartTime, required this.tripEndTime});
+  const DriverCard({super.key, required this.driverFullName, required this.schoolName, required this.busNumber, required this.tripStartTime, required this.tripEndTime, required this.driverImage});
 
   @override
   Widget build(BuildContext context) {
@@ -55,11 +56,19 @@ class DriverCard extends StatelessWidget {
                         ),
                         child: ClipRRect(
                           borderRadius: BorderRadius.circular(AppRadius.cardBorderRadius),
-                          child: Image.asset(
-                            'assets/images/app_logo.png',
+                          child: Image.network(
+                            driverImage,
                             width: 16.w,
                             height: 16.w,
                             fit: BoxFit.cover,
+                            errorBuilder: (context , error , stackTrace){
+                              return Image.asset(
+                                'assets/images/app_logo.png',
+                                width: 16.w,
+                                height: 16.w,
+                                fit: BoxFit.cover,
+                              );
+                            },
                           ),
                         ),
                       ),

@@ -14,4 +14,18 @@ class AppTranslationKeys {
   static const String homeScreenAppBarTitle = 'home_screen_appBart_title';
   static const String pickedUpButton = 'picked_up_button';
   static const String failureButton = 'failure_button';
+
+
+
+  /// profile view
+  static const String profileScreenAppBarTitle = 'profile_screen_appBar_title';
+  static const String accountSettingLabel = 'account_setting_label';
+  static const String personalInfo = 'personal_info';
+  static const String preferencesSettingLabel = 'preferences_setting_label';
+  static const String language = 'language';
+  static const String notifications = 'notifications';
+  static const String supportSettingLabel = 'support_setting_label';
+  static const String contactUs = 'contact_us';
+  static const String about = 'about';
+  static const String logout = 'logout';
 }

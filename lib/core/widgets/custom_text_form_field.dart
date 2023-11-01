@@ -8,9 +8,10 @@ class CustomTextFormField extends StatelessWidget {
   final bool isPassword;
   final Widget? suffixIcon;
   final Color? suffixIconColor;
+  final String? initialValue;
   final Widget prefixIcon;
   final TextInputType keyboardType;
-  const CustomTextFormField({super.key, required this.hintText, required this.textEditingController, required this.isPassword, this.suffixIcon, required this.prefixIcon, this.suffixIconColor, required this.keyboardType});
+  const CustomTextFormField({super.key, required this.hintText, required this.textEditingController, required this.isPassword, this.suffixIcon, required this.prefixIcon, this.suffixIconColor, required this.keyboardType, this.initialValue});
 
   @override
   Widget build(BuildContext context) {
@@ -18,6 +19,7 @@ class CustomTextFormField extends StatelessWidget {
       padding: const EdgeInsets.symmetric(horizontal: AppPaddings.inputHorizontalPadding , vertical: AppPaddings.inputVerticalPadding),
       child: TextFormField(
         controller: textEditingController,
+        initialValue: initialValue,
         obscureText: isPassword ? true : false ,
         keyboardType: keyboardType,
         decoration: InputDecoration(
