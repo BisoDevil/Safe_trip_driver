@@ -31,7 +31,7 @@ class DriverRepo {
 
 
 
-  Future<DriverModel> getProfileData(String driverToken) async {
+  Future<DriverModel> getProfileData(String driverToken) async{
     Map<String, String> headers = {
       'app-token': AppEndPoints.appToken,
       'Accept': 'application/json',
@@ -43,7 +43,7 @@ class DriverRepo {
     );
     if(response.statusCode == 200){
       var body = convert.jsonDecode(response.body);
-      log(response.statusCode.toString());
+      log(body.toString());
       return DriverModel.fromJson(body['data']);
     }else{
       var body = convert.jsonDecode(response.body);

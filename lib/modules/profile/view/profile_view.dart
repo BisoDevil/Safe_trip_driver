@@ -1,5 +1,6 @@
 import 'package:safe_trip_driver_app/index.dart';
-import 'package:safe_trip_driver_app/modules/profile/view/widgets/custom_label.dart';
+import 'package:safe_trip_driver_app/modules/profile/controller/profile_controller.dart';
+import 'package:safe_trip_driver_app/core/widgets/custom_label.dart';
 import 'package:safe_trip_driver_app/modules/profile/view/widgets/custom_list_tile.dart';
 
 
@@ -30,33 +31,45 @@ class ProfileView extends StatelessWidget {
               logout: true,
             ),
             CustomLabel(label: AppTranslationKeys.preferencesSettingLabel.tr),
-            CustomListTile(
-                leadingIcon: Icons.language_rounded,
-                title: AppTranslationKeys.language.tr,
-                onTap: (){
-
-                },
-                color: Colors.white,
-              logout: true,
+            GetBuilder<ProfileController>(
+              builder: (profileController){
+                return CustomListTile(
+                    leadingIcon: Icons.language_rounded,
+                    title: AppTranslationKeys.language.tr,
+                    onTap: (){
+                      profileController.showLanguageSettings();
+                    },
+                    color: Colors.white,
+                  logout: true,
+                  );
+              }
             ),
-            CustomListTile(
-                leadingIcon: Icons.notifications_none_rounded,
-                title: AppTranslationKeys.notifications.tr,
-                onTap: (){
-
-                },
-                color: Colors.white,
-              logout: true,
+            GetBuilder<ProfileController>(
+              builder: (profileController) {
+                return CustomListTile(
+                    leadingIcon: Icons.notifications_none_rounded,
+                    title: AppTranslationKeys.notifications.tr,
+                    onTap: (){
+                      profileController.showNotificationsSettings();
+                    },
+                    color: Colors.white,
+                  logout: true,
+                );
+              }
             ),
             CustomLabel(label: AppTranslationKeys.supportSettingLabel.tr),
-            CustomListTile(
-                leadingIcon: Icons.chat_outlined,
-                title: AppTranslationKeys.contactUs.tr,
-                onTap: (){
-
-                },
-                color: Colors.white,
-              logout: true,
+            GetBuilder<ProfileController>(
+              builder: (profileController) {
+                return CustomListTile(
+                    leadingIcon: Icons.chat_outlined,
+                    title: AppTranslationKeys.contactUs.tr,
+                    onTap: (){
+                      profileController.showContactUs();
+                    },
+                    color: Colors.white,
+                  logout: true,
+                );
+              }
             ),
             CustomListTile(
                 leadingIcon: Icons.help_outline_outlined,

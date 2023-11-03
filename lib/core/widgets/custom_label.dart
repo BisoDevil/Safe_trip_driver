@@ -1,8 +1,9 @@
 import 'package:flutter/material.dart';
-import '../../../../core/theme/app_colors.dart';
-import '../../../../core/theme/app_fonts.dart';
-import '../../../../core/theme/app_styles.dart';
-import '../../../../core/theme/app_theme.dart';
+import '../theme/app_colors.dart';
+import '../theme/app_fonts.dart';
+import '../theme/app_styles.dart';
+import '../theme/app_theme.dart';
+import '../theme/app_values.dart';
 class CustomLabel extends StatelessWidget {
   final String label;
   const CustomLabel({super.key, required this.label});
@@ -10,7 +11,9 @@ class CustomLabel extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Padding(
-      padding: const EdgeInsets.symmetric(vertical: 12),
+      padding: const EdgeInsets.symmetric(
+        horizontal: AppPaddings.mainScreenHorizontalPadding,
+      ),
       child: Text(
         label,
         style: regularStyle(

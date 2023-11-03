@@ -17,7 +17,7 @@ class DriverModel {
   @HiveField(6)
   final String type;
   @HiveField(7)
-  final String token;
+  final String? token;
 
 
   DriverModel({
@@ -43,17 +43,4 @@ class DriverModel {
       token: json['token'],
     );
   }
-
-  Map<String, dynamic> toJson() => {
-    'name': name,
-    'code': code,
-    'mobile': mobile,
-    'national_id': nationalId,
-    'gander': gander,
-    'image': image,
-    'type': type,
-    'token': token,
-  };
-
-
 }

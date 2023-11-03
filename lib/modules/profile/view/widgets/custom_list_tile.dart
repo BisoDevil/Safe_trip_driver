@@ -10,7 +10,8 @@ class CustomListTile extends StatelessWidget {
   final VoidCallback onTap;
   final Color color;
   final bool logout;
-  const CustomListTile({super.key, required this.leadingIcon, required this.title,required this.onTap, required this.color, required this.logout});
+  final bool? trailing;
+  const CustomListTile({super.key, required this.leadingIcon, required this.title,required this.onTap, required this.color, required this.logout, this.trailing});
 
   @override
   Widget build(BuildContext context) {
@@ -30,12 +31,15 @@ class CustomListTile extends StatelessWidget {
           title,
         ),
         trailing:
+        (trailing == true) ?
         (logout)
-        ? const Icon(
-          Icons.arrow_forward_ios,
-          size: 15,
-          color: AppColors.primaryColor,
-        ): null,
+            ? const Icon(
+              Icons.arrow_forward_ios,
+              size: 15,
+              color: AppColors.primaryColor,
+            )
+            : null
+        : null,
         shape: RoundedRectangleBorder(
           borderRadius: BorderRadius.circular(5),
         ),

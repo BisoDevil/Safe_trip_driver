@@ -1,3 +1,4 @@
+import 'package:safe_trip_driver_app/core/widgets/custom_label.dart';
 import 'package:safe_trip_driver_app/index.dart';
 import 'package:safe_trip_driver_app/modules/personal_info/controller/personal_info_controller.dart';
 
@@ -24,18 +25,66 @@ class PersonalInfoView extends StatelessWidget {
               builder: (personalInfoController) {
                 if(personalInfoController.loading == false){
                   return Column(
+                    crossAxisAlignment: CrossAxisAlignment.start,
                     children: [
+                      Padding(
+                        padding: const EdgeInsets.symmetric(vertical: AppPaddings.verticalPaddingBetween),
+                        child: Center(
+                          child: CircleAvatar(
+                            radius: 50,
+                            backgroundColor: Colors.black12,
+                            child: Image.network(
+                                personalInfoController.driverModel.image,
+                                fit: BoxFit.cover,
+                              errorBuilder: (context, error, stackTrace) => const Icon(Icons.person , size: 50,color: AppColors.primaryColor,),
+                            ),
+                          ),
+                        ),
+                      ),
+                      CustomLabel(label: 'Full Name'),
                       CustomTextFormField(
                         hintText: AppTranslationKeys.passwordFieldHint.tr,
                         textEditingController: personalInfoController.nameController,
                         isPassword: personalInfoController.passwordSecure ? true : false,
                         prefixIcon: const Icon(Icons.person),
-                        suffixIcon: personalInfoController.passwordSecure
-                            ? InkWell(child: const Icon(Icons.visibility_off) , onTap: (){personalInfoController.changePasswordVisibility();},)
-                            : InkWell(child: const Icon(Icons.visibility) , onTap: (){personalInfoController.changePasswordVisibility();},),
                         keyboardType: TextInputType.text,
-                        initialValue: personalInfoController.driverModel.name,
-                      )
+                      ),
+                      CustomLabel(label: 'Mobile'),
+                      CustomTextFormField(
+                        hintText: AppTranslationKeys.passwordFieldHint.tr,
+                        textEditingController: personalInfoController.mobileController,
+                        isPassword: personalInfoController.passwordSecure ? true : false,
+                        prefixIcon: const Icon(Icons.person),
+                        keyboardType: TextInputType.text,
+                      ),
+                      CustomLabel(label: 'Gander'),
+                      CustomTextFormField(
+                        hintText: AppTranslationKeys.passwordFieldHint.tr,
+                        isPassword: personalInfoController.passwordSecure ? true : false,
+                        prefixIcon: const Icon(Icons.person),
+                        keyboardType: TextInputType.text,
+                        isEnable: false,
+                        initialValue: personalInfoController.driverModel.gander,
+                      ),
+                      CustomLabel(label: 'Code'),
+                      CustomTextFormField(
+                        hintText: AppTranslationKeys.passwordFieldHint.tr,
+                        isPassword: personalInfoController.passwordSecure ? true : false,
+                        prefixIcon: const Icon(Icons.person),
+                        keyboardType: TextInputType.text,
+                        isEnable: false,
+                        initialValue: personalInfoController.driverModel.code,
+                      ),
+                      CustomLabel(label: 'National Id'),
+                      CustomTextFormField(
+                        hintText: AppTranslationKeys.passwordFieldHint.tr,
+                        isPassword: personalInfoController.passwordSecure ? true : false,
+                        prefixIcon: const Icon(Icons.person),
+                        keyboardType: TextInputType.text,
+                        isEnable: false,
+                        initialValue: personalInfoController.driverModel.nationalId,
+                      ),
+
                     ],
                   );
                 }else{
