@@ -1,5 +1,3 @@
-import 'dart:developer';
-
 import 'package:safe_trip_driver_app/data/repositories/driver_repo.dart';
 import 'package:safe_trip_driver_app/index.dart';
 

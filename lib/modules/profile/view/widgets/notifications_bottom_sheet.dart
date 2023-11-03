@@ -1,7 +1,6 @@
 import 'package:safe_trip_driver_app/core/theme/app_fonts.dart';
 import 'package:safe_trip_driver_app/core/theme/app_styles.dart';
 import 'package:safe_trip_driver_app/index.dart';
-import 'package:safe_trip_driver_app/modules/profile/view/widgets/custom_selectable_list_tile.dart';
 
 class NotificationsBottomSheet extends StatelessWidget {
   const NotificationsBottomSheet({super.key});

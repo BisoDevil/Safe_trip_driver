@@ -41,7 +41,7 @@ class PersonalInfoView extends StatelessWidget {
                           ),
                         ),
                       ),
-                      CustomLabel(label: 'Full Name'),
+                      const CustomLabel(label: 'Full Name'),
                       CustomTextFormField(
                         hintText: AppTranslationKeys.passwordFieldHint.tr,
                         textEditingController: personalInfoController.nameController,
@@ -49,7 +49,7 @@ class PersonalInfoView extends StatelessWidget {
                         prefixIcon: const Icon(Icons.person),
                         keyboardType: TextInputType.text,
                       ),
-                      CustomLabel(label: 'Mobile'),
+                      const CustomLabel(label: 'Mobile'),
                       CustomTextFormField(
                         hintText: AppTranslationKeys.passwordFieldHint.tr,
                         textEditingController: personalInfoController.mobileController,
@@ -57,7 +57,7 @@ class PersonalInfoView extends StatelessWidget {
                         prefixIcon: const Icon(Icons.person),
                         keyboardType: TextInputType.text,
                       ),
-                      CustomLabel(label: 'Gander'),
+                      const CustomLabel(label: 'Gander'),
                       CustomTextFormField(
                         hintText: AppTranslationKeys.passwordFieldHint.tr,
                         isPassword: personalInfoController.passwordSecure ? true : false,
@@ -66,7 +66,7 @@ class PersonalInfoView extends StatelessWidget {
                         isEnable: false,
                         initialValue: personalInfoController.driverModel.gander,
                       ),
-                      CustomLabel(label: 'Code'),
+                      const CustomLabel(label: 'Code'),
                       CustomTextFormField(
                         hintText: AppTranslationKeys.passwordFieldHint.tr,
                         isPassword: personalInfoController.passwordSecure ? true : false,
@@ -75,7 +75,7 @@ class PersonalInfoView extends StatelessWidget {
                         isEnable: false,
                         initialValue: personalInfoController.driverModel.code,
                       ),
-                      CustomLabel(label: 'National Id'),
+                      const CustomLabel(label: 'National Id'),
                       CustomTextFormField(
                         hintText: AppTranslationKeys.passwordFieldHint.tr,
                         isPassword: personalInfoController.passwordSecure ? true : false,
