@@ -1,3 +1,5 @@
+import 'package:safe_trip_driver_app/data/models/route_model.dart';
+
 class TripModel {
 
   final int id;
@@ -9,6 +11,7 @@ class TripModel {
   final String actualTimeStart;
   final String actualTimeEnd;
   final String status;
+  final RouteModel route;
 
   TripModel({
     required this.id,
@@ -20,6 +23,7 @@ class TripModel {
     required this.actualTimeStart,
     required this.actualTimeEnd,
     required this.status,
+    required this.route
   });
 
   factory TripModel.fromJson(Map<String, dynamic> json) {
@@ -34,6 +38,7 @@ class TripModel {
       actualTimeStart: json['actual_time_start'],
       actualTimeEnd: json['actual_time_end'],
       status: json['status'],
+      route: RouteModel.fromJson(json['route']),
     );
   }
 }

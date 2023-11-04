@@ -12,8 +12,8 @@ class Destination extends StatelessWidget {
   Widget build(BuildContext context) {
     return Column(
         children: [
-          Icon(iconData , color: AppColors.whiteTextColor,),
-          Text(time , style: regularStyle(AppFontSize.small, AppColors.whiteTextColor, AppFonts.englishFontFamily),),
+          Icon(iconData , color: AppColors.darkTextColor,),
+          Text(time , style: regularStyle(AppFontSize.small, AppColors.darkTextColor, AppFonts.englishFontFamily),),
         ]
     );
   }

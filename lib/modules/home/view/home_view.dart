@@ -1,3 +1,4 @@
+import 'package:safe_trip_driver_app/modules/home/view/widgets/custom_trip_card.dart';
 import 'package:safe_trip_driver_app/modules/home/view/widgets/driver_card.dart';
 import 'package:safe_trip_driver_app/modules/home/view/widgets/welcome_title.dart';
 import 'package:safe_trip_driver_app/index.dart';
@@ -20,16 +21,22 @@ class HomeView extends StatelessWidget {
             GetBuilder<HomeController>(
               builder: (homeController) {
                 {
-                  return InkWell(
-                    onTap: () {
-                      Get.toNamed(Routes.profileRoute);
-                    },
-                    child: CircleAvatar(
+                  if (!homeController.loading)
+                  {
+                    return InkWell(
+                      onTap: () {
+                        Get.toNamed(Routes.profileRoute);
+                      },
+                      child: CircleAvatar(
                         radius: 10.w,
                         backgroundColor: AppColors.whiteTextColor,
                         backgroundImage:NetworkImage(homeController.currentDriver.image),
-                    ),
-                  );
+                      ),
+                    );
+                  }else {
+                    return const SizedBox();
+                  }
+
                 }
               }
             ),
@@ -53,6 +60,7 @@ class HomeView extends StatelessWidget {
                         tripStartTime: '07:00 AM',
                       ),
 
+                      CustomOnewayTripCard(trip: homeController.todayNotStartedTrip[0]),
 
                       // GetBuilder<HomeController>(
                       //   builder: (homeController) {

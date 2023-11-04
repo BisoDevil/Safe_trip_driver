@@ -1,10 +1,7 @@
 import 'package:safe_trip_driver_app/data/models/driver_model.dart';
-
 import '../../../../core/theme/app_fonts.dart';
 import '../../../../core/theme/app_styles.dart';
 import 'package:safe_trip_driver_app/index.dart';
-
-import 'destination_widget.dart';
 
 class DriverCard extends StatelessWidget {
   final DriverModel driver;
@@ -83,21 +80,21 @@ class DriverCard extends StatelessWidget {
                 ),
               ),
 
-              const Divider( color: AppColors.whiteTextColor,),
-              Row(
-                mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                crossAxisAlignment: CrossAxisAlignment.center,
-                children: [
-                  Destination(time: tripStartTime, iconData:Icons.home_filled),
-                  const Icon(Icons.arrow_forward_sharp , color: AppColors.whiteTextColor,),
-                  Transform.flip(
-                    flipX: (Get.deviceLocale == const Locale('en', 'US')) ? false : true,
-                    child: Image.asset('assets/images/school-bus.png', height: 8.h , width: 12.w, ),
-                  ),
-                  const Icon(Icons.arrow_forward_sharp , color: AppColors.whiteTextColor,),
-                  Destination(time: tripEndTime, iconData: Icons.school),
-                ],
-              )
+              // const Divider( color: AppColors.whiteTextColor,),
+              // Row(
+              //   mainAxisAlignment: MainAxisAlignment.spaceBetween,
+              //   crossAxisAlignment: CrossAxisAlignment.center,
+              //   children: [
+              //     Destination(time: tripStartTime, iconData:Icons.home_filled),
+              //     const Icon(Icons.arrow_forward_sharp , color: AppColors.whiteTextColor,),
+              //     Transform.flip(
+              //       flipX: (Get.deviceLocale == const Locale('en', 'US')) ? false : true,
+              //       child: Image.asset('assets/images/school-bus.png', height: 8.h , width: 12.w, ),
+              //     ),
+              //     const Icon(Icons.arrow_forward_sharp , color: AppColors.whiteTextColor,),
+              //     Destination(time: tripEndTime, iconData: Icons.school),
+              //   ],
+              // )
             ],
           ),
         ),
