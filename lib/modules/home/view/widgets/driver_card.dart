@@ -1,15 +1,16 @@
+import 'package:safe_trip_driver_app/data/models/driver_model.dart';
+
 import '../../../../core/theme/app_fonts.dart';
 import '../../../../core/theme/app_styles.dart';
 import 'package:safe_trip_driver_app/index.dart';
 
+import 'destination_widget.dart';
+
 class DriverCard extends StatelessWidget {
-  final String driverFullName;
-  final String driverImage;
-  final String schoolName;
-  final String busNumber;
+  final DriverModel driver;
   final String tripStartTime;
   final String tripEndTime;
-  const DriverCard({super.key, required this.driverFullName, required this.schoolName, required this.busNumber, required this.tripStartTime, required this.tripEndTime, required this.driverImage});
+  const DriverCard({super.key, required this.tripStartTime, required this.tripEndTime, required this.driver});
 
   @override
   Widget build(BuildContext context) {
@@ -39,42 +40,10 @@ class DriverCard extends StatelessWidget {
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
               Padding(
-                padding: const EdgeInsetsDirectional.only(top: AppPaddings.padding4),
+                padding: const EdgeInsetsDirectional.symmetric(horizontal: AppPaddings.cardHorizontalContentPadding),
                 child: Row(
-                  mainAxisSize: MainAxisSize.max,
+                  mainAxisAlignment: MainAxisAlignment.spaceAround,
                   children: [
-
-
-                    /// driver image
-                    Padding(
-                      padding: const EdgeInsets.symmetric(vertical: AppPaddings.padding4),
-                      child: Card(
-                        clipBehavior: Clip.antiAliasWithSaveLayer,
-                        elevation: 0,
-                        shape: RoundedRectangleBorder(
-                          borderRadius: BorderRadius.circular(AppRadius.cardBorderRadius),
-                        ),
-                        child: ClipRRect(
-                          borderRadius: BorderRadius.circular(AppRadius.cardBorderRadius),
-                          child: Image.network(
-                            driverImage,
-                            width: 16.w,
-                            height: 16.w,
-                            fit: BoxFit.cover,
-                            errorBuilder: (context , error , stackTrace){
-                              return Image.asset(
-                                'assets/images/app_logo.png',
-                                width: 16.w,
-                                height: 16.w,
-                                fit: BoxFit.cover,
-                              );
-                            },
-                          ),
-                        ),
-                      ),
-                    ),
-
-
 
                     /// driver data
                     Expanded(
@@ -83,24 +52,24 @@ class DriverCard extends StatelessWidget {
                         crossAxisAlignment: CrossAxisAlignment.start,
                         children: [
                           Text(
-                          driverFullName,
+                          driver.name,
                             style: regularStyle(AppFontSize.xxLarge, AppColors.whiteTextColor, getFontFamilyFromLanguageCode()),
                             overflow: TextOverflow.ellipsis,
                           ),
                           Text(
-                              schoolName,
+                              driver.nationalId,
                             style: regularStyle(AppFontSize.medium, AppColors.whiteTextColor, getFontFamilyFromLanguageCode()),
                             overflow: TextOverflow.ellipsis,
                           ),
                           Text(
-                            busNumber,
+                            driver.code,
                             style: regularStyle(AppFontSize.medium, AppColors.whiteTextColor, getFontFamilyFromLanguageCode()),
                             overflow: TextOverflow.ellipsis,
                           ),
                         ],
                       ),
                     ),
-                    // const Spacer(),
+
                     /// emergency button
                     IconButton(
                       onPressed: (){},
@@ -120,7 +89,6 @@ class DriverCard extends StatelessWidget {
                 crossAxisAlignment: CrossAxisAlignment.center,
                 children: [
                   Destination(time: tripStartTime, iconData:Icons.home_filled),
-
                   const Icon(Icons.arrow_forward_sharp , color: AppColors.whiteTextColor,),
                   Transform.flip(
                     flipX: (Get.deviceLocale == const Locale('en', 'US')) ? false : true,
@@ -130,36 +98,10 @@ class DriverCard extends StatelessWidget {
                   Destination(time: tripEndTime, iconData: Icons.school),
                 ],
               )
-
-              // TODO: add Divider here
-              // const Divider(
-              //   height: 24,
-              //   thickness: 1,
-              //   color: AppColors.dividerColor,
-              // ),
-             // TODO: add more driver information
-             // TODO: add emergency button
-
             ],
           ),
         ),
       ),
-    );
-  }
-}
-
-class Destination extends StatelessWidget {
-  final String time;
-  final IconData iconData;
-  const Destination({super.key, required this.time, required this.iconData});
-
-  @override
-  Widget build(BuildContext context) {
-    return Column(
-        children: [
-          Icon(iconData , color: AppColors.whiteTextColor,),
-          Text(time , style: regularStyle(AppFontSize.small, AppColors.whiteTextColor, AppFonts.englishFontFamily),),
-        ]
     );
   }
 }

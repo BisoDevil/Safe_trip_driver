@@ -21,7 +21,7 @@ class CustomLoginButton extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Padding(
-      padding: const EdgeInsets.symmetric(horizontal: AppPaddings.inputHorizontalPadding , vertical: AppPaddings.inputVerticalPadding),
+      padding: const EdgeInsets.symmetric( vertical: AppPaddings.inputVerticalPadding),
       child: MaterialButton(
         onPressed: onClick,
         color: buttonBackgroundColor,

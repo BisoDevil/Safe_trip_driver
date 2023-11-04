@@ -27,7 +27,7 @@ class HomeView extends StatelessWidget {
                     child: CircleAvatar(
                         radius: 10.w,
                         backgroundColor: AppColors.whiteTextColor,
-                        child: const Icon(Icons.person_2_rounded , color: AppColors.primaryColor,)
+                        backgroundImage:NetworkImage(homeController.currentDriver.image),
                     ),
                   );
                 }
@@ -48,10 +48,7 @@ class HomeView extends StatelessWidget {
                     children: [
                       WelcomeTitle(driverName: homeController.currentDriver.name.split(' ')[0]),
                       DriverCard(
-                        driverFullName: homeController.currentDriver.name,
-                        driverImage: homeController.currentDriver.image,
-                        schoolName: 'MET – Metropolitan School',
-                        busNumber: 'س ع ص - 123',
+                        driver: homeController.currentDriver,
                         tripEndTime: '08:45 AM',
                         tripStartTime: '07:00 AM',
                       ),

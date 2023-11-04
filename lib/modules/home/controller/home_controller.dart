@@ -1,13 +1,10 @@
-import 'package:safe_trip_driver_app/data/repositories/student_repo.dart';
 import '../../../data/models/driver_model.dart';
-import '../../../data/models/student_model.dart';
 import '../../../index.dart';
 
 
 class HomeController extends GetxController{
 
   bool loading = false;
-  List<StudentModel> students = [];
   late DriverModel currentDriver;
 
 
@@ -20,12 +17,6 @@ class HomeController extends GetxController{
     update();
     super.onInit();
   }
-
-  getAllStudents(int driverId) async {
-    StudentRepo().getStudentsList(driverId);
-    update();
-  }
-
 
   onPickedUpClicked(int id ){
     Get.snackbar(

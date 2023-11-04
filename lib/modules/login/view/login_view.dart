@@ -14,6 +14,10 @@ class LoginView extends StatelessWidget {
         child: SingleChildScrollView(
           keyboardDismissBehavior: ScrollViewKeyboardDismissBehavior.onDrag,
           scrollDirection: Axis.vertical,
+          padding: const EdgeInsets.symmetric(
+            vertical: AppPaddings.mainScreenVerticalPadding,
+            horizontal: AppPaddings.mainScreenHorizontalPadding,
+          ),
           child:  Column (
             children:[
               Image.asset('assets/images/app_logo.png' , height: 25.h,),
