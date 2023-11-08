@@ -15,7 +15,19 @@ class AppTranslationKeys {
   static const String pickedUpButton = 'picked_up_button';
   static const String failureButton = 'failure_button';
 
-
+  static const String tripsStartSoon = 'trips_start_soon';
+  static const String tripsWorkingNow = 'trips_working_now';
+  static const String noTripsStartSoon = 'no_trips_start_soon';
+  static const String noTripsWorkingNow = 'no_trips_working_now';
+  static const String noTripsFinishedToday = 'no_trips_finished_today';
+  /// trip card
+  static const String from = 'from';
+  static const String to = 'to';
+  static const String workingLabel = 'working_label';
+  static const String immediatelyLabel = 'immediately_label';
+  static const String finishedLabel = 'finished_label';
+  static const String startingPoint = 'starting_point';
+  static const String destination = 'destination';
 
   /// profile view
   static const String profileScreenAppBarTitle = 'profile_screen_appBar_title';

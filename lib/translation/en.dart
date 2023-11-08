@@ -20,6 +20,21 @@ Map<String, String> english = {
 
   AppTranslationKeys.pickedUpButton : 'Picked Up',
   AppTranslationKeys.failureButton : 'Failure',
+  AppTranslationKeys.tripsStartSoon : 'Trips Start Soon',
+  AppTranslationKeys.tripsWorkingNow : 'Trips Working Now',
+  AppTranslationKeys.noTripsStartSoon : 'No Trips Will Start Soon',
+  AppTranslationKeys.noTripsWorkingNow : 'No Trips Working Now',
+  AppTranslationKeys.noTripsFinishedToday : 'No Trips Finished Today',
+
+
+  /// trip card
+  AppTranslationKeys.from : 'From',
+  AppTranslationKeys.to : 'To',
+  AppTranslationKeys.workingLabel : 'Working',
+  AppTranslationKeys.finishedLabel : 'Finished',
+  AppTranslationKeys.immediatelyLabel : 'Immediately',
+  AppTranslationKeys.startingPoint : 'Starting Point',
+  AppTranslationKeys.destination : 'Destination',
 
   /// profile view
   AppTranslationKeys.profileScreenAppBarTitle : 'My Profile',

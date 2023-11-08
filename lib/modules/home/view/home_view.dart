@@ -59,125 +59,90 @@ class HomeView extends StatelessWidget {
                         tripEndTime: '08:45 AM',
                         tripStartTime: '07:00 AM',
                       ),
+                      Text(AppTranslationKeys.tripsWorkingNow.tr, style: Theme.of(context).textTheme.titleMedium,),
+                      GetBuilder<HomeController>(
+                          builder: (homeController) {
+                            if (homeController.tripWorkingNow.isEmpty){
+                              return Center(child: Text(AppTranslationKeys.noTripsWorkingNow.tr),);
+                            } else {
+                              return SizedBox(
+                                  width: 100.w,
+                                  child: ListView.builder(
+                                      shrinkWrap: true,
+                                      physics: const NeverScrollableScrollPhysics(),
+                                      itemCount: homeController.tripWorkingNow.length,
+                                      itemBuilder: (BuildContext context, int index) {
+                                        return CustomOnewayTripCard(
+                                            trip: homeController.tripWorkingNow[index],
+                                            onTap: () {
+                                              homeController.onTripCardClicked(homeController.tripWorkingNow[index]);
+                                            }
+                                         );
+                                      }
+                                  )
+                              );
+                            }
+                          }
+                      ),
+                      (homeController.todayNotStartedTrip.isEmpty)
+                         ? SizedBox(height: 2.h,)
+                         : GetBuilder<HomeController>(
+                            builder: (homeController) {
+                              if (homeController.todayNotStartedTrip.isEmpty){
+                                return Center(child: Text(AppTranslationKeys.noTripsStartSoon.tr),);
+                              } else {
+                                return Column(
+                                  children: [
+                                    Text(AppTranslationKeys.tripsStartSoon.tr, style: Theme.of(context).textTheme.titleMedium,),
 
-                      CustomOnewayTripCard(trip: homeController.todayNotStartedTrip[0]),
+                                    SizedBox(
+                                        width: 100.w,
+                                        child: ListView.builder(
+                                            shrinkWrap: true,
+                                            physics: const NeverScrollableScrollPhysics(),
+                                            itemCount: homeController.todayNotStartedTrip.length,
+                                            itemBuilder: (BuildContext context, int index) {
+                                              return CustomOnewayTripCard(
+                                                  trip: homeController.todayNotStartedTrip[index],
+                                                  onTap: () {
+                                                    homeController.onTripCardClicked(homeController.todayNotStartedTrip[index]);
+                                                  }
+                                              );
+                                            }
+                                        )
+                                    ),
+                                  ],
+                                );
+                              }
+                            }
+                        ),
 
-                      // GetBuilder<HomeController>(
-                      //   builder: (homeController) {
-                      //     if (homeController.loading){
-                      //       return const Center(
-                      //         child: CircularProgressIndicator(),
-                      //       );
-                      //     } else if (homeController.loading == false && homeController.placeholderList.isNotEmpty){
-                      //       return SizedBox(
-                      //         width: 100.w,
-                      //         child: ListView.builder(
-                      //           shrinkWrap: true,
-                      //           physics: const NeverScrollableScrollPhysics(),
-                      //           itemCount: homeController.placeholderList.length,
-                      //           itemBuilder: (BuildContext context, int index) {
-                      //             return Padding(
-                      //               padding:
-                      //               const EdgeInsets.symmetric(vertical: 8.0),
-                      //               child: SizedBox(
-                      //                 width: 90.w,
-                      //                 // height: 30.w,
-                      //                 child: StudentCard(
-                      //                     placeholderModel: homeController.placeholderList[index],
-                      //                     onPickedUpClicked: (){
-                      //                       homeController.onPickedUpClicked(homeController.placeholderList[index].id);
-                      //                     },
-                      //                     onFailureClicked: (){
-                      //                       homeController.onFailureClicked(homeController.placeholderList[index].id);
-                      //                     },
-                      //                 ),
-                      //               ),
-                      //             );
-                      //           },
-                      //         ),
-                      //       );
-                      //     } else if (homeController.loading == false && homeController.placeholderList.isEmpty){
-                      //       return CustomLoginButton(
-                      //           buttonTextLabel: 'انهاء الرحله',
-                      //           buttonBackgroundColor: AppColors.primaryColor,
-                      //           labelColor: AppColors.whiteTextColor,
-                      //           onClick: (){
-                      //
-                      //           }
-                      //       );
-                      //     }
-                      //     return const Center(
-                      //       child: Text('No Data Found'),
-                      //     );
-                      //   }
-                      // ),
-                      //
-                      //
-                      // // pickedUpStudents
-                      // GetBuilder<HomeController>(
-                      //     builder: (homeController) {
-                      //       if (homeController.pickedUpList.isEmpty){
-                      //         return const SizedBox();
-                      //       } else {
-                      //         return SizedBox(
-                      //           width: 100.w,
-                      //           child: ListView.builder(
-                      //             shrinkWrap: true,
-                      //             physics: const NeverScrollableScrollPhysics(),
-                      //             itemCount: homeController.pickedUpList.length,
-                      //             itemBuilder: (BuildContext context, int index) {
-                      //               return Padding(
-                      //                 padding:
-                      //                 const EdgeInsets.symmetric(vertical: 8.0),
-                      //                 child: SizedBox(
-                      //                   width: 90.w,
-                      //                   // height: 30.w,
-                      //                   child: SmallStudentCard(
-                      //                     placeholderModel: homeController.pickedUpList[index],
-                      //                     pickedUp: true,
-                      //                   ),
-                      //                 ),
-                      //               );
-                      //             }
-                      //           )
-                      //         );
-                      //       }
-                      //     }
-                      // ),
-                      //
-                      //
-                      // // failure Students
-                      // GetBuilder<HomeController>(
-                      //     builder: (homeController) {
-                      //       if (homeController.failureList.isEmpty){
-                      //         return const SizedBox();
-                      //       } else {
-                      //         return SizedBox(
-                      //             width: 100.w,
-                      //             child: ListView.builder(
-                      //                 shrinkWrap: true,
-                      //                 physics: const NeverScrollableScrollPhysics(),
-                      //                 itemCount: homeController.failureList.length,
-                      //                 itemBuilder: (BuildContext context, int index) {
-                      //                   return Padding(
-                      //                     padding:
-                      //                     const EdgeInsets.symmetric(vertical: 8.0),
-                      //                     child: SizedBox(
-                      //                       width: 90.w,
-                      //                       // height: 30.w,
-                      //                       child: SmallStudentCard(
-                      //                         placeholderModel: homeController.failureList[index],
-                      //                         pickedUp: false,
-                      //                       ),
-                      //                     ),
-                      //                   );
-                      //                 }
-                      //             )
-                      //         );
-                      //       }
-                      //     }
-                      // ),
 
+                      Text('الرحلات التي انتهت اليوم', style: Theme.of(context).textTheme.titleMedium,),
+                      GetBuilder<HomeController>(
+                          builder: (homeController) {
+                            if (homeController.tripFinishedToday.isEmpty){
+                              return Center(child: Text(AppTranslationKeys.noTripsFinishedToday.tr),);
+                            } else {
+                              return SizedBox(
+                                  width: 100.w,
+                                  child: ListView.builder(
+                                      shrinkWrap: true,
+                                      physics: const NeverScrollableScrollPhysics(),
+                                      itemCount: homeController.tripFinishedToday.length,
+                                      itemBuilder: (BuildContext context, int index) {
+                                        return CustomOnewayTripCard(
+                                            trip: homeController.tripFinishedToday[index],
+                                            onTap: () {
+                                              homeController.onTripCardClicked(homeController.tripFinishedToday[index]);
+                                            }
+                                        );
+                                      }
+                                  )
+                              );
+                            }
+                          }
+                      ),
                     ],
                   );
                 } else{

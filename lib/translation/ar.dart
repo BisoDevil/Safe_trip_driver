@@ -22,6 +22,21 @@ Map<String, String> arabic = {
   AppTranslationKeys.failureButton : 'فشل',
 
 
+  AppTranslationKeys.tripsStartSoon : 'الرحلات التي ستبدأ قريباً',
+  AppTranslationKeys.tripsWorkingNow : 'الرحلات قيد التشغيل حالياً',
+  AppTranslationKeys.noTripsStartSoon : 'لا توجد رحلات ستبدأ قريباً اليوم',
+  AppTranslationKeys.noTripsWorkingNow : 'لا توجد رحلات قيد التشغيل حالياً',
+  AppTranslationKeys.noTripsFinishedToday : 'لم يكن هناك رحلات اليوم',
+  /// trips card
+  AppTranslationKeys.from : 'من',
+  AppTranslationKeys.to : 'الى',
+  AppTranslationKeys.workingLabel : 'قيد التشغيل',
+  AppTranslationKeys.finishedLabel : 'انتهت اليوم',
+  AppTranslationKeys.immediatelyLabel : 'قريباً',
+  AppTranslationKeys.startingPoint : 'موقع الانطلاق',
+  AppTranslationKeys.destination : 'الوجهة',
+
+
 
   /// profile view
   AppTranslationKeys.profileScreenAppBarTitle : 'حـسـابـي',

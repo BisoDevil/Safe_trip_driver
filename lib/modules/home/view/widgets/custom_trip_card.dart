@@ -5,29 +5,23 @@ import 'package:safe_trip_driver_app/index.dart';
 
 class CustomOnewayTripCard extends StatelessWidget {
   final TripModel trip;
-  const CustomOnewayTripCard({super.key, required this.trip});
+  final VoidCallback onTap;
+  const CustomOnewayTripCard({super.key, required this.trip, required this.onTap});
 
   @override
   Widget build(BuildContext context) {
     return Card(
+      color: AppColors.whiteTextColor,
       child: Stack(
         children: [
-          Padding(
-            padding: const EdgeInsets.symmetric(vertical: 24),
-            child: Column(
-              children: [
-                Container(
-                  decoration: BoxDecoration(
-                    borderRadius: BorderRadius.circular(8),
-                    image: DecorationImage(
-                      colorFilter: ColorFilter.mode(
-                          AppColors.cardBackgroundColor.withOpacity(0.20),
-                          BlendMode.dstATop),
-                      image: const AssetImage('assets/images/trip_card_background.png'),
-                      fit: BoxFit.cover,
-                    ),
-                  ),
-                  child: Padding(
+          InkWell(
+            onTap: onTap,
+            splashColor: Colors.transparent,
+            child: Padding(
+              padding: const EdgeInsets.symmetric(vertical: 24),
+              child: Column(
+                children: [
+                  Padding(
                     padding: const EdgeInsetsDirectional.symmetric(
                       vertical: AppPaddings.cardVerticalContentPadding,
                       horizontal: AppPaddings.cardHorizontalContentPadding,
@@ -40,7 +34,7 @@ class CustomOnewayTripCard extends StatelessWidget {
                             Column(
                               children: [
                                 Text(
-                                  'From :',
+                                  '${AppTranslationKeys.from.tr} :',
                                   style: Theme.of(context).textTheme.labelMedium,
                                 ),
                                 Text(
@@ -64,7 +58,7 @@ class CustomOnewayTripCard extends StatelessWidget {
                             Column(
                               children: [
                                 Text(
-                                  'To :',
+                                  '${AppTranslationKeys.to.tr} :',
                                   style: Theme.of(context).textTheme.labelMedium,
                                 ),
                                 Text(
@@ -82,7 +76,7 @@ class CustomOnewayTripCard extends StatelessWidget {
                             Column(
                               children: [
                                 Text(
-                                  'Starting point',
+                                  AppTranslationKeys.startingPoint.tr,
                                   style: Theme.of(context).textTheme.labelLarge,
                                 ),
                                 Text(
@@ -95,7 +89,7 @@ class CustomOnewayTripCard extends StatelessWidget {
                             Column(
                               children: [
                                 Text(
-                                  'Destination',
+                                  AppTranslationKeys.destination.tr,
                                   style: Theme.of(context).textTheme.labelLarge,
                                 ),
                                 Text(
@@ -109,8 +103,8 @@ class CustomOnewayTripCard extends StatelessWidget {
                       ],
                     ),
                   ),
-                ),
-              ],
+                ],
+              ),
             ),
           ),
           Positioned(
@@ -118,12 +112,15 @@ class CustomOnewayTripCard extends StatelessWidget {
             child: Container(
               padding: const EdgeInsets.symmetric(vertical: 4, horizontal: 12),
               decoration: BoxDecoration(
-                  color: trip.status == 'not_yet' ? Colors.green : Colors.red,
+                  color: trip.status == 'not_yet' ? AppColors.primaryColor : trip.status == 'working' ? AppColors.successColor : AppColors.errorColor,
                   borderRadius: const BorderRadius.only(
                     topLeft: Radius.circular(AppRadius.cardBorderRadius),
                   ) // green shaped
               ),
-              child: Text(trip.status == 'not_yet' ? 'Immediately' : 'Finished', style: const TextStyle(color: AppColors.whiteTextColor)),
+              child: Text(
+                  trip.status == 'not_yet' ? AppTranslationKeys.immediatelyLabel.tr : trip.status == 'working' ? AppTranslationKeys.workingLabel.tr : AppTranslationKeys.finishedLabel.tr,
+                  style: const TextStyle(color: AppColors.whiteTextColor)
+              ),
             ),
           )
         ],
