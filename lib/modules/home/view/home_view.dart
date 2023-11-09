@@ -84,9 +84,11 @@ class HomeView extends StatelessWidget {
                             }
                           }
                       ),
-                      (homeController.todayNotStartedTrip.isEmpty)
-                         ? SizedBox(height: 2.h,)
-                         : GetBuilder<HomeController>(
+
+
+
+
+                        GetBuilder<HomeController>(
                             builder: (homeController) {
                               if (homeController.todayNotStartedTrip.isEmpty){
                                 return Center(child: Text(AppTranslationKeys.noTripsStartSoon.tr),);
