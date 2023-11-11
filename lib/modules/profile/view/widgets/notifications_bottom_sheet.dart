@@ -1,5 +1,4 @@
-import 'package:safe_trip_driver_app/core/theme/app_fonts.dart';
-import 'package:safe_trip_driver_app/core/theme/app_styles.dart';
+
 import 'package:safe_trip_driver_app/index.dart';
 
 class NotificationsBottomSheet extends StatelessWidget {

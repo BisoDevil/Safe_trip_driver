@@ -1,7 +1,6 @@
 
 import 'package:safe_trip_driver_app/index.dart';
-import '../../../../core/theme/app_fonts.dart';
-import '../../../../core/theme/app_styles.dart';
+
 
 
 class CustomLoginButton extends StatelessWidget {

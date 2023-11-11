@@ -4,6 +4,8 @@ export 'package:get/get.dart';
 export 'package:safe_trip_driver_app/core/theme/app_colors.dart';
 export 'package:safe_trip_driver_app/core/theme/app_theme.dart';
 export 'package:safe_trip_driver_app/core/theme/app_values.dart';
+export 'package:safe_trip_driver_app/core/theme/app_fonts.dart';
+export 'package:safe_trip_driver_app/core/theme/app_styles.dart';
 export 'package:safe_trip_driver_app/core/constants/app_routes.dart';
 export 'package:safe_trip_driver_app/utils/extensions.dart';
 export 'package:safe_trip_driver_app/modules/home/controller/home_controller.dart';

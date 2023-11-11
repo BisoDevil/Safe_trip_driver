@@ -1,8 +1,6 @@
 import 'package:safe_trip_driver_app/data/models/supervisor_model.dart';
 import 'package:safe_trip_driver_app/index.dart';
 
-import '../../../../core/theme/app_fonts.dart';
-import '../../../../core/theme/app_styles.dart';
 class SupervisorCard extends StatelessWidget {
   final SupervisorModel supervisorModel;
   const SupervisorCard({super.key, required this.supervisorModel});

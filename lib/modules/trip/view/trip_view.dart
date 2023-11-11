@@ -5,8 +5,6 @@ import 'package:safe_trip_driver_app/modules/trip/view/widgets/student_card.dart
 import 'package:safe_trip_driver_app/modules/trip/view/widgets/supervisor_card.dart';
 import 'package:safe_trip_driver_app/modules/trip/view/widgets/trip_list_tile.dart';
 
-import '../../../core/theme/app_fonts.dart';
-import '../../../core/theme/app_styles.dart';
 
 class TripView extends StatelessWidget {
   final TripModel trip = Get.arguments as TripModel;
@@ -108,7 +106,7 @@ class TripView extends StatelessWidget {
             onPressed: (){},
           ),
 
-          Text('الركاب ' , style: Theme.of(context).textTheme.titleMedium,),
+
 
           GetBuilder<TripController>(builder: (tripController) {
             if (tripController.loading) {

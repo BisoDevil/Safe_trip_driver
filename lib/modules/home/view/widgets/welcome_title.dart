@@ -1,5 +1,4 @@
-import '../../../../core/theme/app_fonts.dart';
-import '../../../../core/theme/app_styles.dart';
+
 import 'package:safe_trip_driver_app/index.dart';
 
 class WelcomeTitle extends StatelessWidget {

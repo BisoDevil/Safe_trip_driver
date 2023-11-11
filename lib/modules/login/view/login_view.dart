@@ -1,3 +1,4 @@
+import 'package:safe_trip_driver_app/core/widgets/loading.dart';
 import 'package:safe_trip_driver_app/modules/login/view/widgets/custom_login_button.dart';
 import 'package:safe_trip_driver_app/core/widgets/custom_text_form_field.dart';
 import 'package:safe_trip_driver_app/index.dart';
@@ -9,8 +10,6 @@ class LoginView extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       body: Center(
-
-
         child: SingleChildScrollView(
           keyboardDismissBehavior: ScrollViewKeyboardDismissBehavior.onDrag,
           scrollDirection: Axis.vertical,
@@ -64,11 +63,7 @@ class LoginView extends StatelessWidget {
                         }
                     );
                   }else{
-                    return SizedBox(
-                      height: 6.h,
-                      width: 6.h,
-                      child: const CircularProgressIndicator(strokeWidth: 1.5),
-                    );
+                    return const Loading();
                     }
                   }
                 }

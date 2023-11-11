@@ -1,5 +1,4 @@
-import 'app_fonts.dart';
-import 'app_styles.dart';
+
 import 'package:safe_trip_driver_app/index.dart';
 
 String getFontFamilyFromLanguageCode() {

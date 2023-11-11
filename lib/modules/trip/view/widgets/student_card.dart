@@ -1,8 +1,6 @@
 import 'package:safe_trip_driver_app/data/models/student_model.dart';
 import 'package:safe_trip_driver_app/modules/home/view/widgets/student_card_button.dart';
 import 'package:url_launcher/url_launcher.dart';
-import '../../../../core/theme/app_fonts.dart';
-import '../../../../core/theme/app_styles.dart';
 import 'package:safe_trip_driver_app/index.dart';
 
 class StudentCard extends StatelessWidget {

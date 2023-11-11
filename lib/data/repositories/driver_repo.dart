@@ -43,13 +43,8 @@ class DriverRepo {
     );
     if(response.statusCode == 200){
       var body = convert.jsonDecode(response.body);
-      log(body.toString());
       return DriverModel.fromJson(body['data']);
     }else{
-      var body = convert.jsonDecode(response.body);
-      var data = body['message'];
-      log(response.statusCode.toString());
-      log(data.toString());
       throw Exception();
     }
   }

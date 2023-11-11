@@ -22,82 +22,93 @@ class PersonalInfoView extends StatelessWidget {
             keyboardDismissBehavior: ScrollViewKeyboardDismissBehavior.onDrag,
             scrollDirection: Axis.vertical,
             child: GetBuilder<PersonalInfoController>(
-              builder: (personalInfoController) {
-                if(personalInfoController.loading == false){
-                  return Column(
-                    crossAxisAlignment: CrossAxisAlignment.start,
-                    children: [
-                      Padding(
-                        padding: const EdgeInsets.symmetric(vertical: AppPaddings.verticalPaddingBetween),
-                        child: Center(
-                          child: CircleAvatar(
-                            radius: 50,
-                            backgroundColor: Colors.black12,
-                            child: Image.network(
-                                personalInfoController.driverModel.image,
-                                fit: BoxFit.cover,
-                              errorBuilder: (context, error, stackTrace) => const Icon(Icons.person , size: 50,color: AppColors.primaryColor,),
-                            ),
+                builder: (personalInfoController) {
+              if (personalInfoController.loading == false) {
+                return Column(
+                  crossAxisAlignment: CrossAxisAlignment.start,
+                  children: [
+                    Padding(
+                      padding: const EdgeInsets.symmetric(
+                          vertical: AppPaddings.verticalPaddingBetween),
+                      child: Center(
+                        child: CircleAvatar(
+                          radius: 50,
+                          backgroundColor: Colors.black12,
+                          backgroundImage: NetworkImage(
+                            personalInfoController.driverModel.image,
+                          ),
+                          onBackgroundImageError: (exception, stackTrace) =>
+                              const Icon(
+                            Icons.person,
+                            size: 50,
+                            color: AppColors.primaryColor,
                           ),
                         ),
                       ),
-                      const CustomLabel(label: 'Full Name'),
-                      CustomTextFormField(
-                        hintText: AppTranslationKeys.passwordFieldHint.tr,
-                        textEditingController: personalInfoController.nameController,
-                        isPassword: personalInfoController.passwordSecure ? true : false,
-                        prefixIcon: const Icon(Icons.person),
-                        keyboardType: TextInputType.text,
-                      ),
-                      const CustomLabel(label: 'Mobile'),
-                      CustomTextFormField(
-                        hintText: AppTranslationKeys.passwordFieldHint.tr,
-                        textEditingController: personalInfoController.mobileController,
-                        isPassword: personalInfoController.passwordSecure ? true : false,
-                        prefixIcon: const Icon(Icons.person),
-                        keyboardType: TextInputType.text,
-                      ),
-                      const CustomLabel(label: 'Gander'),
-                      CustomTextFormField(
-                        hintText: AppTranslationKeys.passwordFieldHint.tr,
-                        isPassword: personalInfoController.passwordSecure ? true : false,
-                        prefixIcon: const Icon(Icons.person),
-                        keyboardType: TextInputType.text,
-                        isEnable: false,
-                        initialValue: personalInfoController.driverModel.gander,
-                      ),
-                      const CustomLabel(label: 'Code'),
-                      CustomTextFormField(
-                        hintText: AppTranslationKeys.passwordFieldHint.tr,
-                        isPassword: personalInfoController.passwordSecure ? true : false,
-                        prefixIcon: const Icon(Icons.person),
-                        keyboardType: TextInputType.text,
-                        isEnable: false,
-                        initialValue: personalInfoController.driverModel.code,
-                      ),
-                      const CustomLabel(label: 'National Id'),
-                      CustomTextFormField(
-                        hintText: AppTranslationKeys.passwordFieldHint.tr,
-                        isPassword: personalInfoController.passwordSecure ? true : false,
-                        prefixIcon: const Icon(Icons.person),
-                        keyboardType: TextInputType.text,
-                        isEnable: false,
-                        initialValue: personalInfoController.driverModel.nationalId,
-                      ),
-
-                    ],
-                  );
-                }else{
-                  return Center(
-                    child: SizedBox(
-                      height: 6.h,
-                      width: 6.h,
-                      child: const CircularProgressIndicator(strokeWidth: 1.5),
                     ),
-                  );
-                }
+                    const CustomLabel(label: 'Full Name'),
+                    CustomTextFormField(
+                      hintText: AppTranslationKeys.passwordFieldHint.tr,
+                      textEditingController:
+                          personalInfoController.nameController,
+                      isPassword:
+                          personalInfoController.passwordSecure ? true : false,
+                      prefixIcon: const Icon(Icons.person),
+                      keyboardType: TextInputType.text,
+                    ),
+                    const CustomLabel(label: 'Mobile'),
+                    CustomTextFormField(
+                      hintText: AppTranslationKeys.passwordFieldHint.tr,
+                      textEditingController:
+                          personalInfoController.mobileController,
+                      isPassword:
+                          personalInfoController.passwordSecure ? true : false,
+                      prefixIcon: const Icon(Icons.person),
+                      keyboardType: TextInputType.text,
+                    ),
+                    const CustomLabel(label: 'Gander'),
+                    CustomTextFormField(
+                      hintText: AppTranslationKeys.passwordFieldHint.tr,
+                      isPassword:
+                          personalInfoController.passwordSecure ? true : false,
+                      prefixIcon: const Icon(Icons.person),
+                      keyboardType: TextInputType.text,
+                      isEnable: false,
+                      initialValue: personalInfoController.driverModel.gander,
+                    ),
+                    const CustomLabel(label: 'Code'),
+                    CustomTextFormField(
+                      hintText: AppTranslationKeys.passwordFieldHint.tr,
+                      isPassword:
+                          personalInfoController.passwordSecure ? true : false,
+                      prefixIcon: const Icon(Icons.person),
+                      keyboardType: TextInputType.text,
+                      isEnable: false,
+                      initialValue: personalInfoController.driverModel.code,
+                    ),
+                    const CustomLabel(label: 'National Id'),
+                    CustomTextFormField(
+                      hintText: AppTranslationKeys.passwordFieldHint.tr,
+                      isPassword:
+                          personalInfoController.passwordSecure ? true : false,
+                      prefixIcon: const Icon(Icons.person),
+                      keyboardType: TextInputType.text,
+                      isEnable: false,
+                      initialValue:
+                          personalInfoController.driverModel.nationalId,
+                    ),
+                  ],
+                );
+              } else {
+                return Center(
+                  child: SizedBox(
+                    height: 6.h,
+                    width: 6.h,
+                    child: const CircularProgressIndicator(strokeWidth: 1.5),
+                  ),
+                );
               }
-            ),
+            }),
           ),
         ));
   }

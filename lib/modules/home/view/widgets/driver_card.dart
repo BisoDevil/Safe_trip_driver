@@ -1,13 +1,10 @@
 import 'package:safe_trip_driver_app/data/models/driver_model.dart';
-import '../../../../core/theme/app_fonts.dart';
-import '../../../../core/theme/app_styles.dart';
 import 'package:safe_trip_driver_app/index.dart';
 
 class DriverCard extends StatelessWidget {
   final DriverModel driver;
-  final String tripStartTime;
-  final String tripEndTime;
-  const DriverCard({super.key, required this.tripStartTime, required this.tripEndTime, required this.driver});
+
+  const DriverCard({super.key, required this.driver});
 
   @override
   Widget build(BuildContext context) {
