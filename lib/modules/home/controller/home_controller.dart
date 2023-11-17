@@ -37,22 +37,6 @@ class HomeController extends GetxController{
     }
   }
 
-  onPickedUpClicked(int id ){
-    Get.snackbar(
-      'Done !',
-      'PickedUp Successfully ^_^',
-    );
-    update();
-  }
-
-  onFailureClicked(int id ){
-        Get.snackbar(
-          'Done !',
-          'Failure Successfully ^_^',
-        );
-    update();
-  }
-
 
   onTripCardClicked( TripModel trip) async {
 

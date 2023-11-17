@@ -4,6 +4,7 @@ import 'package:safe_trip_driver_app/modules/trip/controller/trip_controller.dar
 import 'package:safe_trip_driver_app/modules/trip/view/widgets/student_card.dart';
 import 'package:safe_trip_driver_app/modules/trip/view/widgets/supervisor_card.dart';
 import 'package:safe_trip_driver_app/modules/trip/view/widgets/trip_list_tile.dart';
+import 'package:url_launcher/url_launcher.dart';
 
 
 class TripView extends StatelessWidget {
@@ -98,12 +99,22 @@ class TripView extends StatelessWidget {
           TripListTile(
             iconData: Icons.start_outlined,
             title: 'مكان الانطلاق : ${trip.route.addressFrom}',
-            onPressed: (){},
+            onPressed: () async{
+              String location = trip.route.locationFrom;
+              var lat = location.substring(location.indexOf('' , 0), location.lastIndexOf(','));
+              var lon = location.substring(location.lastIndexOf(',')+1, location.length);
+              await launchUrl(Uri.parse('https://www.google.com/maps/search/?api=1&query=$lat,$lon'), mode: LaunchMode.externalApplication);
+            },
           ),
           TripListTile(
             iconData: Icons.location_on_outlined,
             title: 'الوجهه : ${trip.route.addressTo}',
-            onPressed: (){},
+            onPressed: () async {
+              String location = trip.route.locationTo;
+              var lat = location.substring(location.indexOf('' , 0), location.lastIndexOf(','));
+              var lon = location.substring(location.lastIndexOf(',')+1, location.length);
+              await launchUrl(Uri.parse('https://www.google.com/maps/search/?api=1&query=$lat,$lon'), mode: LaunchMode.externalApplication);
+            },
           ),
 
 
@@ -122,8 +133,18 @@ class TripView extends StatelessWidget {
                       itemBuilder: (BuildContext context, int index) {
                         return StudentCard(
                             studentModel: tripController.studentsInTrip[index],
-                            onPickedUpClicked: (){},
-                            onFailureClicked: (){},
+                            onPickedUpClicked: (){
+                              tripController.onPickedUpClicked(
+                                  tripController.studentsInTrip[index].studentId,
+                                  tripController.studentsInTrip[index].id,
+                              );
+                            },
+                            onFailureClicked: (){
+                              tripController.onFailureClicked(
+                                tripController.studentsInTrip[index].studentId,
+                                tripController.studentsInTrip[index].id,
+                              );
+                            },
                         );
                       }
                   )

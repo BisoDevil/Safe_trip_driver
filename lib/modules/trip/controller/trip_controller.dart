@@ -20,4 +20,40 @@ class TripController extends GetxController {
   }
 
 
+
+  onPickedUpClicked(int studentId , int tripId ) async {
+    try {
+      await StudentRepo().changeStudentState(driverToken, studentId, tripId, 'picked_up');
+      Get.snackbar(
+        'Done ',
+        'Student status changed successfully',
+      );
+      update();
+    }catch (e){
+      String message = await StudentRepo().changeStudentState(driverToken, studentId, tripId, 'arrived');
+      Get.snackbar(
+        'Error !',
+        message,
+      );
+    }
+  }
+
+  onFailureClicked( int studentId , int tripId ) async {
+    try {
+      await StudentRepo().changeStudentState(driverToken, studentId, tripId, 'picked_up');
+      Get.snackbar(
+        'Done ',
+        'Student status changed successfully',
+      );
+      update();
+    }catch (e){
+      String message = await StudentRepo().changeStudentState(driverToken, studentId, tripId, 'absent');
+      Get.snackbar(
+        'Error !',
+        message,
+      );
+    }
+  }
+
+
 }
