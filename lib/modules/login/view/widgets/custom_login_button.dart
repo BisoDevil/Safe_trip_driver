@@ -5,40 +5,34 @@ import 'package:safe_trip_driver_app/index.dart';
 
 class CustomLoginButton extends StatelessWidget {
   final String buttonTextLabel;
-  final Color buttonBackgroundColor;
-  final Color labelColor;
+  final Color? buttonBackgroundColor;
   final VoidCallback onClick;
 
   const CustomLoginButton(
       {super.key,
         required this.buttonTextLabel,
-        required this.buttonBackgroundColor,
-        required this.labelColor,
+        this.buttonBackgroundColor,
         required this.onClick
       });
 
   @override
   Widget build(BuildContext context) {
-    return Padding(
-      padding: const EdgeInsets.symmetric( vertical: AppPaddings.inputVerticalPadding),
-      child: MaterialButton(
-        onPressed: onClick,
-        color: buttonBackgroundColor,
-        shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(AppRadius.inputBorderRadius)),
-        child: Row(
-
-          mainAxisAlignment: MainAxisAlignment.center,
-
-          children: [
-            Padding(
-                padding: const EdgeInsets.symmetric(vertical: 10),
-                child: Text(
-                    buttonTextLabel,
-                  style: regularStyle(AppFontSize.medium, Colors.white, getFontFamilyFromLanguageCode())
-                )
-            ),
-          ],
-        ),
+    return ElevatedButton(
+      onPressed: onClick,
+      style: ElevatedButton.styleFrom(
+        backgroundColor: buttonBackgroundColor,
+      ),
+      child: Row(
+        mainAxisAlignment: MainAxisAlignment.center,
+        children: [
+          Padding(
+              padding: const EdgeInsets.symmetric(vertical: 10),
+              child: Text(
+                  buttonTextLabel,
+                style: regularStyle(AppFontSize.medium, Colors.white, getFontFamilyFromLanguageCode())
+              )
+          ),
+        ],
       ),
     );
   }

@@ -13,12 +13,12 @@ class WelcomeTitle extends StatelessWidget {
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
           Text(
-            '${AppTranslationKeys.welcomeTitle.tr} , $driverName',
+            '${'welcome_title'.tr} , $driverName',
             style: regularStyle(AppFontSize.xLarge, AppColors.darkTextColor , getFontFamilyFromLanguageCode()),
           ),
           SizedBox(height: 2.h),
           Text(
-            AppTranslationKeys.welcomeSubTitle.tr,
+            'welcome_subtitle'.tr,
             style: regularStyle(AppFontSize.medium, AppColors.darkTextColor , getFontFamilyFromLanguageCode()),
           )
         ]

@@ -19,7 +19,7 @@ class ContactUsBottomSheet extends StatelessWidget {
         child: Column(
           mainAxisAlignment: MainAxisAlignment.center,
           children: [
-            Text(AppTranslationKeys.contactUs.tr , style: regularStyle(AppFontSize.large, AppColors.inactiveTextColor, getFontFamilyFromLanguageCode()),),
+            Text('contact_us'.tr , style: regularStyle(AppFontSize.large, AppColors.inactiveTextColor, getFontFamilyFromLanguageCode()),),
             const Spacer(),
             CustomListTile(
                 leadingIcon: Icons.phone,

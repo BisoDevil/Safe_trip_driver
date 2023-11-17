@@ -34,7 +34,7 @@ class CustomOnewayTripCard extends StatelessWidget {
                             Column(
                               children: [
                                 Text(
-                                  '${AppTranslationKeys.from.tr} :',
+                                  '${'from'.tr} :',
                                   style: Theme.of(context).textTheme.labelMedium,
                                 ),
                                 Text(
@@ -58,7 +58,7 @@ class CustomOnewayTripCard extends StatelessWidget {
                             Column(
                               children: [
                                 Text(
-                                  '${AppTranslationKeys.to.tr} :',
+                                  '${'to'.tr} :',
                                   style: Theme.of(context).textTheme.labelMedium,
                                 ),
                                 Text(
@@ -76,7 +76,7 @@ class CustomOnewayTripCard extends StatelessWidget {
                             Column(
                               children: [
                                 Text(
-                                  AppTranslationKeys.startingPoint.tr,
+                                  'starting_point'.tr,
                                   style: Theme.of(context).textTheme.labelLarge,
                                 ),
                                 Text(
@@ -89,7 +89,7 @@ class CustomOnewayTripCard extends StatelessWidget {
                             Column(
                               children: [
                                 Text(
-                                  AppTranslationKeys.destination.tr,
+                                  'destination'.tr,
                                   style: Theme.of(context).textTheme.labelLarge,
                                 ),
                                 Text(
@@ -118,7 +118,7 @@ class CustomOnewayTripCard extends StatelessWidget {
                   ) // green shaped
               ),
               child: Text(
-                  trip.status == 'not_yet' ? AppTranslationKeys.immediatelyLabel.tr : trip.status == 'working' ? AppTranslationKeys.workingLabel.tr : AppTranslationKeys.finishedLabel.tr,
+                  trip.status == 'not_yet' ? 'immediately_label'.tr : trip.status == 'working' ? 'working_label'.tr : 'finished_label'.tr,
                   style: const TextStyle(color: AppColors.whiteTextColor)
               ),
             ),

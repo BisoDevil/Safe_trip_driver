@@ -10,4 +10,3 @@ export 'package:safe_trip_driver_app/core/constants/app_routes.dart';
 export 'package:safe_trip_driver_app/utils/extensions.dart';
 export 'package:safe_trip_driver_app/modules/home/controller/home_controller.dart';
 export 'package:safe_trip_driver_app/modules/login/controller/login_controller.dart';
-export 'package:safe_trip_driver_app/core/constants/app_translation_keys.dart';

@@ -10,16 +10,17 @@ void main() async {
   Hive.registerAdapter(DriverModelAdapter());
   final currentDriver = await Hive.openBox<DriverModel>('current_driver_box');
   isAuth = currentDriver.containsKey('current_driver');
+  SystemChrome.setSystemUIOverlayStyle(SystemUiOverlayStyle.dark.copyWith(
+      statusBarColor: Colors.transparent,
+      statusBarIconBrightness: Brightness.dark
+  ));
   runApp(const MyApp());
 }
 class MyApp extends StatelessWidget {
   const MyApp({super.key});
   @override
   build(BuildContext context) {
-    SystemChrome.setSystemUIOverlayStyle(SystemUiOverlayStyle.dark.copyWith(
-        statusBarColor: Colors.transparent,
-        statusBarIconBrightness: Brightness.dark
-    ));
+
 
     return GetMaterialApp (
       debugShowCheckedModeBanner: false,

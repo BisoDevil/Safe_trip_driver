@@ -1,54 +1,51 @@
 
-
-import 'package:safe_trip_driver_app/core/constants/app_translation_keys.dart';
-
 Map<String, String> arabic = {
 
   /// Login View
-  AppTranslationKeys.phoneFieldHint : 'رقم الهاتف ... ',
-  AppTranslationKeys.passwordFieldHint : 'كلمة المرور ... ',
-  AppTranslationKeys.loginButton : 'تسجيل الدخول',
-
-  AppTranslationKeys.error : 'خطأ',
-  AppTranslationKeys.errorEmptyFieldMessage : 'يرجي ملئ جميع البيانات',
-  AppTranslationKeys.loginCredentialsRejectedMessage : 'بيانات الدخول غير صحيحة',
+  'phone_field_hint' : 'رقم الهاتف ... ',
+  'password_field_hint' : 'كلمة المرور ... ',
+  'login_button' : 'تسجيل الدخول',
+  'error' : 'خطأ',
+  'login_credential_error' : 'كلمه السر او رقم الهاتف خطأ',
+  'error_empty_field_message' : 'يرجي ملئ البيانات',
+  'login_credentials_rejected' : 'بيانات الدخول غير صحيحة',
   /// Home view
 
-  AppTranslationKeys.welcomeTitle : 'صباح الخير',
-  AppTranslationKeys.welcomeSubTitle : 'تطبيق سائق الرحلة الآمنة ، تتبع الحافلة المدرسية لطفلك في الوقت الفعلي',
-  AppTranslationKeys.homeScreenAppBarTitle : 'تطبيق سائق الرحلة الآمنة',
+  'welcome_title' : 'صباح الخير',
+  'welcome_subtitle' : 'تطبيق سائق الرحلة الآمنة ، تتبع الحافلة المدرسية لطفلك في الوقت الفعلي',
+  'home_screen_appBart_title' : 'تطبيق سائق الرحلة الآمنة',
 
-  AppTranslationKeys.pickedUpButton : 'التقط',
-  AppTranslationKeys.failureButton : 'فشل',
+  'picked_up_button' : 'التقط',
+  'failure_button' : 'فشل',
 
 
-  AppTranslationKeys.tripsStartSoon : 'الرحلات التي ستبدأ قريباً',
-  AppTranslationKeys.tripsWorkingNow : 'الرحلات قيد التشغيل حالياً',
-  AppTranslationKeys.noTripsStartSoon : 'لا توجد رحلات ستبدأ قريباً اليوم',
-  AppTranslationKeys.noTripsWorkingNow : 'لا توجد رحلات قيد التشغيل حالياً',
-  AppTranslationKeys.noTripsFinishedToday : 'لم يكن هناك رحلات اليوم',
+  'trips_start_soon' : 'الرحلات التي ستبدأ قريباً',
+  'trips_working_now' : 'الرحلات قيد التشغيل حالياً',
+
+  'no_trips_working_now' : 'لا توجد رحلات قيد التشغيل حالياً',
+
   /// trips card
-  AppTranslationKeys.from : 'من',
-  AppTranslationKeys.to : 'الى',
-  AppTranslationKeys.workingLabel : 'قيد التشغيل',
-  AppTranslationKeys.finishedLabel : 'انتهت اليوم',
-  AppTranslationKeys.immediatelyLabel : 'قريباً',
-  AppTranslationKeys.startingPoint : 'موقع الانطلاق',
-  AppTranslationKeys.destination : 'الوجهة',
+  'from' : 'من',
+  'to' : 'الى',
+  'working_label': 'قيد التشغيل',
+  'finished_label' : 'انتهت اليوم',
+  'immediately_label' : 'قريباً',
+  'starting_point' : 'موقع الانطلاق',
+  'destination' : 'الوجهة',
 
 
 
   /// profile view
-  AppTranslationKeys.profileScreenAppBarTitle : 'حـسـابـي',
-  AppTranslationKeys.accountSettingLabel : 'إعدادات الحساب',
-  AppTranslationKeys.personalInfo : 'المعلومات الشخصيه',
-  AppTranslationKeys.preferencesSettingLabel : 'إعدادات التطبيق',
-  AppTranslationKeys.language : 'اللغة',
-  AppTranslationKeys.notifications : 'الإشعارات',
-  AppTranslationKeys.supportSettingLabel : 'الدعم',
-  AppTranslationKeys.contactUs : 'التواصل معنا',
-  AppTranslationKeys.about : 'الدعم',
-  AppTranslationKeys.logout : 'تسجيل الخروج',
+  'profile_screen_appBar_title' : 'حـسـابـي',
+  'account_setting_label': 'إعدادات الحساب',
+  'personal_info' : 'المعلومات الشخصيه',
+  'preferences_setting_label' : 'إعدادات التطبيق',
+  'language' : 'اللغة',
+  'notifications' : 'الإشعارات',
+  'support_setting_label' : 'الدعم',
+  'contact_us' : 'التواصل معنا',
+  'about' : 'الدعم',
+  'logout' : 'تسجيل الخروج',
 
 
 };

@@ -6,13 +6,13 @@ import '../../core/constants/app_endpoints.dart';
 
 class StudentRepo {
 
+  Map<String, String> headers = {
+    'app-token': AppEndPoints.appToken,
+    'Accept': 'application/json',
+  };
 
   Future<List<StudentModel>> getStudentsInTrip (String driverToken , int tripId) async {
-    Map<String, String> headers = {
-      'app-token': AppEndPoints.appToken,
-      'Accept': 'application/json',
-      'Authorization': 'Bearer $driverToken'
-    };
+    headers['authorization'] = 'Bearer $driverToken';
     http.Response response = await http.get(
       Uri.parse('${AppEndPoints.studentsInTrip}/3'),
       headers: headers,
@@ -26,10 +26,5 @@ class StudentRepo {
       throw Exception();
     }
   }
-
-
-
-
-
 
 }

@@ -3,23 +3,23 @@ import 'package:safe_trip_driver_app/core/theme/app_values.dart';
 
 
 class CustomTextFormField extends StatelessWidget {
-  final String hintText;
-  final TextEditingController? textEditingController;
+  final String? hintText;
   final bool isPassword;
   final Widget? suffixIcon;
   final Color? suffixIconColor;
   final String? initialValue;
   final Widget prefixIcon;
-  final TextInputType keyboardType;
+  final TextInputType? keyboardType;
   final bool? isEnable;
-  const CustomTextFormField({super.key, required this.hintText, this.textEditingController, required this.isPassword, this.suffixIcon, required this.prefixIcon, this.suffixIconColor, required this.keyboardType, this.initialValue, this.isEnable});
+  final ValueChanged<String?>? onSaved;
+  final FormFieldValidator<String>? validator;
+  const CustomTextFormField({super.key, this.hintText, required this.isPassword, this.suffixIcon, required this.prefixIcon, this.suffixIconColor, this.keyboardType, this.initialValue, this.isEnable,  this.onSaved, this.validator});
 
   @override
   Widget build(BuildContext context) {
     return Padding(
       padding: const EdgeInsets.symmetric( vertical: AppPaddings.inputVerticalPadding),
       child: TextFormField(
-        controller: textEditingController,
         initialValue: initialValue,
         obscureText: isPassword ? true : false ,
         keyboardType: keyboardType,
@@ -33,6 +33,13 @@ class CustomTextFormField extends StatelessWidget {
           suffixIconColor: suffixIconColor,
           enabled: isEnable ?? true,
         ),
+        onTapOutside: (_) {
+          FocusScope.of(context).unfocus();
+        },
+        onSaved: onSaved,
+        validator: validator,
+        onFieldSubmitted: onSaved,
+
       ),
     );
   }

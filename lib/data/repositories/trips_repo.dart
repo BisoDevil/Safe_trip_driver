@@ -7,14 +7,16 @@ import 'package:http/http.dart' as http;
 
 class TripsRepo {
 
+  Map<String, String> headers = {
+    'app-token': AppEndPoints.appToken,
+    'Accept': 'application/json',
+  };
+
+
   /// get working now trips "started trips"
   ///
   Future<List<TripModel>> getWorkingNowTrip (String driverToken) async {
-    Map<String, String> headers = {
-      'app-token': AppEndPoints.appToken,
-      'Accept': 'application/json',
-      'Authorization': 'Bearer $driverToken'
-    };
+    headers['authorization'] = 'Bearer $driverToken';
     http.Response response = await http.get(
       Uri.parse(AppEndPoints.workingNowTrip),
       headers: headers,
@@ -41,11 +43,7 @@ class TripsRepo {
   ///
 
   Future<List<TripModel>> getTodayNotStartedYetTrips (String driverToken) async {
-    Map<String, String> headers = {
-      'app-token': AppEndPoints.appToken,
-      'Accept': 'application/json',
-      'Authorization': 'Bearer $driverToken'
-    };
+    headers['authorization'] = 'Bearer $driverToken';
     http.Response response = await http.get(
       Uri.parse(AppEndPoints.todayNotStartedTrips),
       headers: headers,
@@ -70,11 +68,7 @@ class TripsRepo {
   /// get finished today's trips "started and finished "
   ///
   Future<List<TripModel>> getStartedAndFinishedTrips (String driverToken) async {
-    Map<String, String> headers = {
-      'app-token': AppEndPoints.appToken,
-      'Accept': 'application/json',
-      'Authorization': 'Bearer $driverToken'
-    };
+    headers['authorization'] = 'Bearer $driverToken';
     http.Response response = await http.get(
       Uri.parse(AppEndPoints.tripsFinishedToday),
       headers: headers,

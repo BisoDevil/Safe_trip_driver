@@ -7,10 +7,12 @@ import 'dart:convert' as convert;
 
 
 class DriverRepo {
-
+  Map<String, String> headers = {
+    'app-token': AppEndPoints.appToken,
+    'Accept': 'application/json',
+  };
 
   Future<DriverModel> login(String account, String password) async {
-    Map<String, String> headers = {'app-token': AppEndPoints.appToken};
     Map<String, String> body = {'account': account, 'password': password};
     http.Response response = await http.post(
       Uri.parse(AppEndPoints.login),
@@ -32,11 +34,7 @@ class DriverRepo {
 
 
   Future<DriverModel> getProfileData(String driverToken) async{
-    Map<String, String> headers = {
-      'app-token': AppEndPoints.appToken,
-      'Accept': 'application/json',
-      'Authorization': 'Bearer $driverToken'
-    };
+    headers['authorization'] = 'Bearer $driverToken';
     http.Response response = await http.get(
       Uri.parse(AppEndPoints.profile),
       headers: headers,

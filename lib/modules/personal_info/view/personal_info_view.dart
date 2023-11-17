@@ -1,17 +1,17 @@
 import 'package:safe_trip_driver_app/core/widgets/custom_label.dart';
+import 'package:safe_trip_driver_app/core/widgets/loading.dart';
 import 'package:safe_trip_driver_app/index.dart';
 import 'package:safe_trip_driver_app/modules/personal_info/controller/personal_info_controller.dart';
-
 import '../../../core/widgets/custom_text_form_field.dart';
 
-class PersonalInfoView extends StatelessWidget {
+class PersonalInfoView extends GetView<PersonalInfoController> {
   const PersonalInfoView({super.key});
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
         appBar: AppBar(
-          title: Text(AppTranslationKeys.personalInfo.tr),
+          title: Text('personal_info'.tr),
         ),
         body: Padding(
           padding: const EdgeInsets.symmetric(
@@ -19,8 +19,6 @@ class PersonalInfoView extends StatelessWidget {
             horizontal: AppPaddings.mainScreenHorizontalPadding,
           ),
           child: SingleChildScrollView(
-            keyboardDismissBehavior: ScrollViewKeyboardDismissBehavior.onDrag,
-            scrollDirection: Axis.vertical,
             child: GetBuilder<PersonalInfoController>(
                 builder: (personalInfoController) {
               if (personalInfoController.loading == false) {
@@ -48,51 +46,41 @@ class PersonalInfoView extends StatelessWidget {
                     ),
                     const CustomLabel(label: 'Full Name'),
                     CustomTextFormField(
-                      hintText: AppTranslationKeys.passwordFieldHint.tr,
-                      textEditingController:
-                          personalInfoController.nameController,
-                      isPassword:
-                          personalInfoController.passwordSecure ? true : false,
+                      isPassword: personalInfoController.passwordSecure ? true : false,
                       prefixIcon: const Icon(Icons.person),
-                      keyboardType: TextInputType.text,
+                      initialValue: personalInfoController.driverModel.name,
+                      onSaved: (value) {
+                        personalInfoController.name = value!;
+                      },
                     ),
                     const CustomLabel(label: 'Mobile'),
                     CustomTextFormField(
-                      hintText: AppTranslationKeys.passwordFieldHint.tr,
-                      textEditingController:
-                          personalInfoController.mobileController,
-                      isPassword:
-                          personalInfoController.passwordSecure ? true : false,
-                      prefixIcon: const Icon(Icons.person),
-                      keyboardType: TextInputType.text,
+                      isPassword: personalInfoController.passwordSecure ? true : false,
+                      prefixIcon: const Icon(Icons.phone_android),
+                      initialValue: personalInfoController.driverModel.mobile,
+                      keyboardType: TextInputType.number,
                     ),
                     const CustomLabel(label: 'Gander'),
                     CustomTextFormField(
-                      hintText: AppTranslationKeys.passwordFieldHint.tr,
-                      isPassword:
-                          personalInfoController.passwordSecure ? true : false,
-                      prefixIcon: const Icon(Icons.person),
-                      keyboardType: TextInputType.text,
+                      isPassword: false,
+                      prefixIcon: const Icon(Icons.perm_contact_calendar_sharp),
+
                       isEnable: false,
                       initialValue: personalInfoController.driverModel.gander,
                     ),
                     const CustomLabel(label: 'Code'),
                     CustomTextFormField(
-                      hintText: AppTranslationKeys.passwordFieldHint.tr,
                       isPassword:
                           personalInfoController.passwordSecure ? true : false,
-                      prefixIcon: const Icon(Icons.person),
-                      keyboardType: TextInputType.text,
+                      prefixIcon: const Icon(Icons.code_off),
                       isEnable: false,
                       initialValue: personalInfoController.driverModel.code,
                     ),
                     const CustomLabel(label: 'National Id'),
                     CustomTextFormField(
-                      hintText: AppTranslationKeys.passwordFieldHint.tr,
                       isPassword:
                           personalInfoController.passwordSecure ? true : false,
-                      prefixIcon: const Icon(Icons.person),
-                      keyboardType: TextInputType.text,
+                      prefixIcon: const Icon(Icons.numbers),
                       isEnable: false,
                       initialValue:
                           personalInfoController.driverModel.nationalId,
@@ -100,13 +88,7 @@ class PersonalInfoView extends StatelessWidget {
                   ],
                 );
               } else {
-                return Center(
-                  child: SizedBox(
-                    height: 6.h,
-                    width: 6.h,
-                    child: const CircularProgressIndicator(strokeWidth: 1.5),
-                  ),
-                );
+                return const Center(child: Loading(),);
               }
             }),
           ),

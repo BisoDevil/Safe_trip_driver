@@ -1,5 +1,5 @@
 import 'package:safe_trip_driver_app/data/models/student_model.dart';
-import 'package:safe_trip_driver_app/modules/home/view/widgets/student_card_button.dart';
+import 'package:safe_trip_driver_app/modules/login/view/widgets/custom_login_button.dart';
 import 'package:url_launcher/url_launcher.dart';
 import 'package:safe_trip_driver_app/index.dart';
 
@@ -81,11 +81,11 @@ class StudentCard extends StatelessWidget {
                       IconButton(
                         onPressed: () async
                           {
-                            // TODO: open dialer and call the student
+
                             await launchUrl(
                             Uri(
                               scheme: 'tel',
-                              path: '01023668557',
+                              path: '01023668557', // TODO: change my phone number to student phone number
                             ),
                             mode: LaunchMode.externalApplication
                             );
@@ -98,8 +98,8 @@ class StudentCard extends StatelessWidget {
                       ),
                       IconButton(
                         onPressed: () async {
-                          // TODO: open student location
-                          await launchUrl(Uri.parse('https://maps.app.goo.gl/ZViLAFH24GqqUyVbA?g_st=iw'),
+
+                          await launchUrl(Uri.parse('https://maps.app.goo.gl/ZViLAFH24GqqUyVbA?g_st=iw'), // TODO: change my location to student location
                               mode: LaunchMode.externalApplication);
                         },
                         icon: const Icon(Icons.directions),
@@ -116,20 +116,19 @@ class StudentCard extends StatelessWidget {
               Row(
                 children: [
                   Expanded(
-                    child: StudentCardButton(
-                        buttonTextLabel: AppTranslationKeys.failureButton.tr,
+                    child: CustomLoginButton(
+                        buttonTextLabel: 'failure_button'.tr,
                         buttonBackgroundColor: AppColors.errorColor,
-                        labelColor: Colors.white,
                         onClick: (){
                           onFailureClicked();
                         }
                     ),
                   ),
+                  SizedBox(width: 1.w,),
                   Expanded(
-                    child: StudentCardButton(
-                        buttonTextLabel: AppTranslationKeys.pickedUpButton.tr,
+                    child: CustomLoginButton(
+                        buttonTextLabel: 'picked_up_button'.tr,
                         buttonBackgroundColor: AppColors.successColor,
-                        labelColor: Colors.white,
                         onClick: (){
                           onPickedUpClicked();
                         }
