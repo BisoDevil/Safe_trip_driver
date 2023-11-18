@@ -15,7 +15,7 @@ class TripView extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: const Text('trip details'),
+        title: Text('trip_details'.tr),
       ),
       body: SingleChildScrollView(
         padding: const EdgeInsets.symmetric(
@@ -134,15 +134,16 @@ class TripView extends StatelessWidget {
                         return StudentCard(
                             studentModel: tripController.studentsInTrip[index],
                             onPickedUpClicked: (){
+
                               tripController.onPickedUpClicked(
                                   tripController.studentsInTrip[index].studentId,
-                                  tripController.studentsInTrip[index].id,
+                                  3, // trip.id TODO: TODO: change trip_id value from 3 to tripId variable
                               );
                             },
                             onFailureClicked: (){
                               tripController.onFailureClicked(
                                 tripController.studentsInTrip[index].studentId,
-                                tripController.studentsInTrip[index].id,
+                                  3, // trip.id TODO: TODO: change trip_id value from 3 to tripId variable
                               );
                             },
                         );
@@ -152,7 +153,8 @@ class TripView extends StatelessWidget {
             }else {
               return const Text('');
             }
-          })
+          },
+         ),
         ]),
       ),
     );

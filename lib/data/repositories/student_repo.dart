@@ -29,7 +29,7 @@ class StudentRepo {
 
   Future<String> changeStudentState (String driverToken , int studentId , int tripId , String status ) async {
     headers['authorization'] = 'Bearer $driverToken';
-    Map<String, dynamic> body = {'student_id': '1', 'trip_id': '3' , 'status': status}; // TODO: change student_id and trip_id values from 1 & 3 to studentId & tripId
+    Map<String, dynamic> body = {'student_id': studentId.toString() , 'trip_id' : tripId.toString() , 'status': status};
     http.Response response = await http.post(
       Uri.parse(AppEndPoints.changeStudentState),
       headers: headers,

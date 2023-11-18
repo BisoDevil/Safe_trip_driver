@@ -1,4 +1,5 @@
 
+
 import 'package:safe_trip_driver_app/index.dart';
 import '../../../data/models/student_model.dart';
 import '../../../data/repositories/student_repo.dart';
@@ -23,37 +24,47 @@ class TripController extends GetxController {
 
   onPickedUpClicked(int studentId , int tripId ) async {
     try {
-      await StudentRepo().changeStudentState(driverToken, studentId, tripId, 'picked_up');
+      await StudentRepo().changeStudentState(driverToken, studentId, tripId, 'on_the_way');
+      loading = true;
+      studentsInTrip = await StudentRepo().getStudentsInTrip(driverToken, tripId);
+      loading = false;
       Get.snackbar(
         'Done ',
         'Student status changed successfully',
       );
-      update();
+
     }catch (e){
-      String message = await StudentRepo().changeStudentState(driverToken, studentId, tripId, 'arrived');
+      String message = await StudentRepo().changeStudentState(driverToken, studentId, tripId, 'on_the_way');
       Get.snackbar(
         'Error !',
         message,
       );
     }
+    update();
   }
 
   onFailureClicked( int studentId , int tripId ) async {
     try {
-      await StudentRepo().changeStudentState(driverToken, studentId, tripId, 'picked_up');
+      await StudentRepo().changeStudentState(driverToken, studentId, tripId, 'absent');
+      loading = true;
+      studentsInTrip = await StudentRepo().getStudentsInTrip(driverToken, tripId);
+      loading = false;
       Get.snackbar(
         'Done ',
         'Student status changed successfully',
       );
-      update();
+
     }catch (e){
       String message = await StudentRepo().changeStudentState(driverToken, studentId, tripId, 'absent');
+      studentsInTrip.where((element) => element.id == studentId).first.status = 'absent';
       Get.snackbar(
         'Error !',
         message,
       );
     }
+    update();
   }
+
 
 
 }

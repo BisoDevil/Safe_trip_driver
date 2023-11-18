@@ -1,5 +1,5 @@
 import 'package:safe_trip_driver_app/core/widgets/loading.dart';
-import 'package:safe_trip_driver_app/modules/login/view/widgets/custom_login_button.dart';
+import 'package:safe_trip_driver_app/core/widgets/custom_button.dart';
 import 'package:safe_trip_driver_app/core/widgets/custom_text_form_field.dart';
 import 'package:safe_trip_driver_app/index.dart';
 
@@ -69,7 +69,7 @@ class LoginView extends GetView<LoginController> {
                 GetBuilder<LoginController>(
                   builder: (loginController){ {
                     if (loginController.loading == false) {
-                      return CustomLoginButton(
+                      return CustomButton(
                           buttonTextLabel: 'login_button'.tr,
                           onClick: (){
                             final isValid = loginController.formKey.currentState?.validate();

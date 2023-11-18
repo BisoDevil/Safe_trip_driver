@@ -4,7 +4,7 @@ import 'package:safe_trip_driver_app/data/models/school_model.dart';
 class StudentModel {
   final int id;
   final int studentId;
-  final String status;
+  late final String status;
   final Student student;
 
   StudentModel({

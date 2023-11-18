@@ -3,12 +3,12 @@ import 'package:safe_trip_driver_app/index.dart';
 
 
 
-class CustomLoginButton extends StatelessWidget {
+class CustomButton extends StatelessWidget {
   final String buttonTextLabel;
   final Color? buttonBackgroundColor;
   final VoidCallback onClick;
 
-  const CustomLoginButton(
+  const CustomButton(
       {super.key,
         required this.buttonTextLabel,
         this.buttonBackgroundColor,

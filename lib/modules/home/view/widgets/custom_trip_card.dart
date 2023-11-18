@@ -114,7 +114,8 @@ class CustomOnewayTripCard extends StatelessWidget {
               decoration: BoxDecoration(
                   color: trip.status == 'not_yet' ? AppColors.primaryColor : trip.status == 'working' ? AppColors.successColor : AppColors.errorColor,
                   borderRadius: const BorderRadius.only(
-                    topLeft: Radius.circular(AppRadius.cardBorderRadius),
+                    topRight: Radius.circular(AppRadius.cardBorderRadius),
+                    bottomLeft: Radius.circular(AppRadius.cardBorderRadius),
                   ) // green shaped
               ),
               child: Text(
