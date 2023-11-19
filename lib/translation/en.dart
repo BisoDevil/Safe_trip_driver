@@ -18,7 +18,7 @@ Map<String, String> english = {
 
   'trips_start_soon' : 'Trips Start Soon',
   'trips_working_now' : 'Trips Working Now',
-
+  'trips_finished_now' : 'Trips Finished Now',
   'no_trips_working_now' : 'No Trips Working Now',
 
 
@@ -33,7 +33,13 @@ Map<String, String> english = {
   'destination' : 'Destination',
   'picked_up_button' : 'Picked Up',
   'failure_button' : 'Failure',
-
+  'start_trip' : 'Start Trip',
+  'end_trip' : 'End Trip',
+  'bus_number' : 'Bus Number',
+  'passenger_count' : 'Passenger Count',
+  'Destination' : 'Destination',
+  'confirm' : 'Confirm',
+  'cancel' : 'Cancel',
 
   // profile view
   'profile_screen_appBar_title' : 'My Profile',

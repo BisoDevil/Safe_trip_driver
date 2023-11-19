@@ -82,28 +82,26 @@ class TripsRepo {
     }
   }
 
-  /// get tomorrow's trips " not started yet "
+  /// change trip status
   ///
 
-  // Future<List<TripModel>> getTomorrowNotStartedYetTrips (String driverToken) async {
-  //   Map<String, String> headers = {
-  //     'app-token': AppEndPoints.appToken,
-  //     'Accept': 'application/json',
-  //     'Authorization': 'Bearer $driverToken'
-  //   };
-  //   http.Response response = await http.get(
-  //     Uri.parse(AppEndPoints.tomorrowNotStartedTrips),
-  //     headers: headers,
-  //   );
-  //   if(response.statusCode == 200){
-  //     final List result = json.decode(response.body)['data'];
-  //     return result.map((e) => TripModel.fromJson(e)).toList();
-  //   }else{
-  //     log(json.decode(response.body)['message']);
-  //     throw Exception();
-  //   }
-  // }
+  Future<String> changeTripState (String driverToken , String status , String tripId ) async {
+    headers['authorization'] = 'Bearer $driverToken';
+    Map<String, dynamic> body = {'status': status , 'trip_id' : tripId.toString()};
+    http.Response response = await http.post(
+      Uri.parse(AppEndPoints.changeTripStatus),
+      headers: headers,
+      body: body,
+    );
+    if(response.statusCode == 200){
+      return (json.decode(response.body)['message']);
+    }else{
+      log(response.statusCode.toString());
+      log(json.decode(response.body)['message']);
+      return (json.decode(response.body)['message']);
+    }
 
+  }
 
 
 

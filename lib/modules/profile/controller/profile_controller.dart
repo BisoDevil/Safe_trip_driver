@@ -18,6 +18,12 @@ class ProfileController extends GetxController{
     );
   }
 
+  updateLanguage(Locale locale){
+    Get.back();
+    Get.updateLocale(locale);
+  }
+
+
   showNotificationsSettings(){
     Get.bottomSheet(
       const NotificationsBottomSheet(),

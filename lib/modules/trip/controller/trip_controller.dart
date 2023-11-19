@@ -1,5 +1,4 @@
-
-
+import 'package:safe_trip_driver_app/data/repositories/trips_repo.dart';
 import 'package:safe_trip_driver_app/index.dart';
 import '../../../data/models/student_model.dart';
 import '../../../data/repositories/student_repo.dart';
@@ -10,6 +9,7 @@ class TripController extends GetxController {
   static late String driverToken;
   static late int tripId;
   late List<StudentModel> studentsInTrip;
+  bool studentCardButtonEnabled = true;
 
   @override
   void onInit() async {
@@ -22,10 +22,11 @@ class TripController extends GetxController {
 
 
 
+
   onPickedUpClicked(int studentId , int tripId ) async {
     try {
-      await StudentRepo().changeStudentState(driverToken, studentId, tripId, 'on_the_way');
       loading = true;
+      await StudentRepo().changeStudentState(driverToken, studentId, tripId, 'on_the_way');
       studentsInTrip = await StudentRepo().getStudentsInTrip(driverToken, tripId);
       loading = false;
       Get.snackbar(
@@ -45,8 +46,8 @@ class TripController extends GetxController {
 
   onFailureClicked( int studentId , int tripId ) async {
     try {
-      await StudentRepo().changeStudentState(driverToken, studentId, tripId, 'absent');
       loading = true;
+      await StudentRepo().changeStudentState(driverToken, studentId, tripId, 'absent');
       studentsInTrip = await StudentRepo().getStudentsInTrip(driverToken, tripId);
       loading = false;
       Get.snackbar(
@@ -65,6 +66,11 @@ class TripController extends GetxController {
     update();
   }
 
-
+  changeTripStatus(String status,String tripId) async {
+    loading = true;
+    await TripsRepo().changeTripState(driverToken, status, tripId);
+    loading = false;
+    update();
+  }
 
 }

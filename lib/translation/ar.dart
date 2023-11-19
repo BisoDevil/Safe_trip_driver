@@ -19,6 +19,7 @@ Map<String, String> arabic = {
 
   'trips_start_soon' : 'الرحلات التي ستبدأ قريباً',
   'trips_working_now' : 'الرحلات قيد التشغيل حالياً',
+  'trips_finished_now' : 'الرحلات التي انتهت اليوم',
   'no_trips_working_now' : 'لا توجد رحلات قيد التشغيل حالياً',
 
 
@@ -33,8 +34,10 @@ Map<String, String> arabic = {
   'destination' : 'الوجهة',
   'picked_up_button' : 'التقط',
   'failure_button' : 'فشل',
-
-
+  'start_trip' : 'بـدء الـرحـلـة',
+  'end_trip' : 'إنـهـاء الـرحـلـة',
+  'bus_number' : 'رقم الحافلة',
+  'passenger_count' : 'عدد الركاب',
   /// profile view
   'profile_screen_appBar_title' : 'حـسـابـي',
   'account_setting_label': 'إعدادات الحساب',
@@ -46,6 +49,7 @@ Map<String, String> arabic = {
   'contact_us' : 'التواصل معنا',
   'about' : 'الدعم',
   'logout' : 'تسجيل الخروج',
-
+  'confirm' : 'تأكيد',
+  'cancel' : 'إلغاء',
 
 };

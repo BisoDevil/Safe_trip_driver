@@ -7,11 +7,13 @@ class StudentCard extends StatelessWidget {
   final StudentModel studentModel;
   final Function onPickedUpClicked;
   final Function onFailureClicked;
+  final bool enabled;
   const StudentCard(
       {super.key,
       required this.onPickedUpClicked,
       required this.onFailureClicked,
-      required this.studentModel});
+      required this.studentModel,
+        required this.enabled});
 
   @override
   Widget build(BuildContext context) {
@@ -143,33 +145,42 @@ class StudentCard extends StatelessWidget {
                       ),
                     ],
                   ),
-                  SizedBox(
-                    height: 3.h,
-                  ),
-                  studentModel.status != 'waiting'
-                      ? Row(
-                          children: [
-                            Expanded(
-                              child: CustomButton(
-                                  buttonTextLabel: 'failure_button'.tr,
-                                  buttonBackgroundColor: AppColors.errorColor,
-                                  onClick: () {
-                                    onFailureClicked();
-                                  }),
-                            ),
-                            SizedBox(
-                              width: 1.w,
-                            ),
-                            Expanded(
-                              child: CustomButton(
-                                  buttonTextLabel: 'picked_up_button'.tr,
-                                  buttonBackgroundColor: AppColors.successColor,
-                                  onClick: () {
-                                    onPickedUpClicked();
-                                  }),
-                            ),
-                          ],
-                        )
+                  studentModel.status != 'waiting' && enabled //  TODO: change " != " later to " == " to disable buttons when student status changed from "waiting" to "on the way" or "arrived"
+                      ? Padding(
+                        padding: const EdgeInsets.only(top: AppPaddings.verticalPaddingBetween),
+                        child: Row(
+                            children: [
+                              Expanded(
+                                child: CustomButton(
+                                    buttonTextLabel: 'failure_button'.tr,
+                                    buttonBackgroundColor: AppColors.errorColor,
+                                    onClick: () {
+                                      if (enabled){
+                                        onFailureClicked();
+                                      }else{
+                                        Get.snackbar('title', 'message');
+                                      }
+
+                                    }),
+                              ),
+                              SizedBox(
+                                width: 1.w,
+                              ),
+                              Expanded(
+                                child: CustomButton(
+                                    buttonTextLabel: 'picked_up_button'.tr,
+                                    buttonBackgroundColor: AppColors.successColor,
+                                    onClick: () {
+                                      if (enabled){
+                                        onPickedUpClicked();
+                                      }else{
+                                        Get.snackbar('title', 'message');
+                                      }
+                                    }),
+                              ),
+                            ],
+                          ),
+                      )
                       : const SizedBox.shrink(),
                 ],
               ),

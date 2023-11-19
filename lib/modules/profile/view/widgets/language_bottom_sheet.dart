@@ -1,8 +1,9 @@
 
 import 'package:safe_trip_driver_app/index.dart';
+import 'package:safe_trip_driver_app/modules/profile/controller/profile_controller.dart';
 import 'package:safe_trip_driver_app/modules/profile/view/widgets/custom_selectable_list_tile.dart';
 
-class LanguageBottomSheet extends StatelessWidget {
+class LanguageBottomSheet extends GetView<ProfileController> {
   const LanguageBottomSheet({super.key});
 
   @override
@@ -18,13 +19,17 @@ class LanguageBottomSheet extends StatelessWidget {
           Text('language'.tr , style: regularStyle(AppFontSize.large, AppColors.inactiveTextColor, getFontFamilyFromLanguageCode()),),
           CustomSelectableListTile(
               title: 'English',
-              onTap: (){},
+              onTap: (){
+                controller.updateLanguage(const Locale('en','US'));
+              },
               color: Colors.white,
               active: false,
           ),
           CustomSelectableListTile(
             title: 'عربي',
-            onTap: (){},
+            onTap: (){
+              controller.updateLanguage(const Locale('ar'));
+            },
             color: Colors.white,
             active: true,
           )

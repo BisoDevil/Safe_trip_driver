@@ -1,3 +1,4 @@
+import 'package:safe_trip_driver_app/core/widgets/custom_button.dart';
 import 'package:safe_trip_driver_app/data/models/trip_model.dart';
 import 'package:safe_trip_driver_app/index.dart';
 import 'package:safe_trip_driver_app/modules/trip/controller/trip_controller.dart';
@@ -24,6 +25,46 @@ class TripView extends StatelessWidget {
         ),
         child: Column(children: [
           SupervisorCard(supervisorModel: trip.supervisor),
+
+          /// if the trip status is finished this button will not appear
+          /// if the trip status is not yet this button title will be start_trip
+          /// if the trip status is working this button title will be end_trip
+          trip.status != 'finished'
+              ? Padding(
+                padding: const EdgeInsets.only(bottom: AppPaddings.verticalPaddingBetween),
+                child: GetBuilder<TripController>(
+                  builder: (tripController) {
+                    return CustomButton(
+                                buttonTextLabel: trip.status == 'not_yet' ? 'start_trip'.tr: 'end_trip'.tr,
+                                onClick: (){
+                                  Get.defaultDialog(
+                                    confirm: CustomButton(
+                                      buttonTextLabel: 'confirm'.tr,
+                                      onClick: () {
+                                        tripController.changeTripStatus(
+                                          trip.status == 'not_yet' ? 'working' : 'finished',
+                                          trip.id.toString(),
+                                        );
+                                        Get.offAllNamed('/home_view');
+                                      },
+                                    ),
+                                    cancel: CustomButton(
+                                      buttonTextLabel: 'cancel'.tr,
+                                      onClick: () {
+                                        Get.back();
+                                      }
+                                    )
+                                  );
+
+                                },
+                              );
+                  }
+                ),
+              )
+              : const SizedBox(),
+
+
+
           Container(
             width: 100.w,
             decoration: BoxDecoration(
@@ -94,11 +135,11 @@ class TripView extends StatelessWidget {
               ),
             ),
           ),
-          TripListTile(iconData: Icons.directions_bus, title: 'رقم الباص : ${trip.busId}',),
-          TripListTile(iconData: Icons.group, title: 'عدد الركاب : ${trip.passengerAvailable}' ,),
+          TripListTile(iconData: Icons.directions_bus, title: '${"bus_number".tr} : ${trip.busId}',),
+          TripListTile(iconData: Icons.group, title: '${'passenger_count'.tr} : ${trip.passengerAvailable}' ,),
           TripListTile(
             iconData: Icons.start_outlined,
-            title: 'مكان الانطلاق : ${trip.route.addressFrom}',
+            title: '${'starting_point'.tr} : ${trip.route.addressFrom}',
             onPressed: () async{
               String location = trip.route.locationFrom;
               var lat = location.substring(location.indexOf('' , 0), location.lastIndexOf(','));
@@ -108,7 +149,7 @@ class TripView extends StatelessWidget {
           ),
           TripListTile(
             iconData: Icons.location_on_outlined,
-            title: 'الوجهه : ${trip.route.addressTo}',
+            title: '${'destination'.tr} : ${trip.route.addressTo}',
             onPressed: () async {
               String location = trip.route.locationTo;
               var lat = location.substring(location.indexOf('' , 0), location.lastIndexOf(','));
@@ -134,7 +175,6 @@ class TripView extends StatelessWidget {
                         return StudentCard(
                             studentModel: tripController.studentsInTrip[index],
                             onPickedUpClicked: (){
-
                               tripController.onPickedUpClicked(
                                   tripController.studentsInTrip[index].studentId,
                                   3, // trip.id TODO: TODO: change trip_id value from 3 to tripId variable
@@ -146,6 +186,7 @@ class TripView extends StatelessWidget {
                                   3, // trip.id TODO: TODO: change trip_id value from 3 to tripId variable
                               );
                             },
+                          enabled: trip.status == 'working' ? true : false,
                         );
                       }
                   )

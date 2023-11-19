@@ -39,7 +39,6 @@ class HomeController extends GetxController{
 
 
   onTripCardClicked( TripModel trip) async {
-
     TripController.driverToken = currentDriver.token!;
     TripController.tripId = trip.id;
     Get.toNamed(Routes.tripRoute , arguments: trip);
