@@ -8,7 +8,7 @@ import 'package:safe_trip_driver_app/modules/trip/view/widgets/trip_list_tile.da
 import 'package:url_launcher/url_launcher.dart';
 
 
-class TripView extends StatelessWidget {
+class TripView extends GetView<TripController> {
   final TripModel trip = Get.arguments as TripModel;
   TripView({super.key});
 
@@ -38,6 +38,7 @@ class TripView extends StatelessWidget {
                                 buttonTextLabel: trip.status == 'not_yet' ? 'start_trip'.tr: 'end_trip'.tr,
                                 onClick: (){
                                   Get.defaultDialog(
+                                    title: trip.status == 'not_yet' ? 'start_trip'.tr: 'end_trip'.tr,
                                     confirm: CustomButton(
                                       buttonTextLabel: 'confirm'.tr,
                                       onClick: () {
@@ -45,7 +46,7 @@ class TripView extends StatelessWidget {
                                           trip.status == 'not_yet' ? 'working' : 'finished',
                                           trip.id.toString(),
                                         );
-                                        Get.offAllNamed('/home_view');
+                                        // Get.offAllNamed('/home_view');
                                       },
                                     ),
                                     cancel: CustomButton(

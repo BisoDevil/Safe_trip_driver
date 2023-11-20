@@ -1,15 +1,22 @@
-import 'package:safe_trip_driver_app/data/repositories/trips_repo.dart';
+import 'dart:async';
+import 'dart:developer';
+
+import 'package:cloud_firestore/cloud_firestore.dart';
+import 'package:intl/intl.dart';
 import 'package:safe_trip_driver_app/index.dart';
 import '../../../data/models/student_model.dart';
 import '../../../data/repositories/student_repo.dart';
-
+import 'package:location/location.dart';
 
 class TripController extends GetxController {
   bool loading = false;
   static late String driverToken;
   static late int tripId;
+  Location location = Location();
+  StreamSubscription<LocationData>? locationSubscription;
   late List<StudentModel> studentsInTrip;
   bool studentCardButtonEnabled = true;
+
 
   @override
   void onInit() async {
@@ -19,7 +26,11 @@ class TripController extends GetxController {
     update();
     super.onInit();
   }
-
+  @override
+  void onClose() {
+    locationSubscription?.cancel();
+    super.onClose();
+  }
 
 
 
@@ -67,10 +78,65 @@ class TripController extends GetxController {
   }
 
   changeTripStatus(String status,String tripId) async {
-    loading = true;
-    await TripsRepo().changeTripState(driverToken, status, tripId);
-    loading = false;
-    update();
+
+    bool serviceEnabled;
+    PermissionStatus permissionGranted;
+
+    serviceEnabled = await location.serviceEnabled();
+    if (!serviceEnabled) {
+      serviceEnabled = await location.requestService();
+      if (!serviceEnabled) {
+        return;
+      }
+    }
+    permissionGranted = await location.hasPermission();
+    if (permissionGranted == PermissionStatus.denied) {
+      permissionGranted = await location.requestPermission();
+      if (permissionGranted != PermissionStatus.granted) {
+        return;
+      }
+    }
+    var locationData = await location.getLocation();
+
+    log('latitude : ${locationData.latitude.toString()}');
+    log('longitude : ${locationData.longitude.toString()}');
+
+    if(status == 'working'){
+      locationSubscription = location.onLocationChanged.listen((event) {
+        insertDataToFirestore(tripId, driverToken, event.latitude.toString(), event.longitude.toString());
+      });
+    }else {
+      locationSubscription?.cancel();
+    }
+
+
+
+
+    // loading = true;
+    // await TripsRepo().changeTripState(driverToken, status, tripId);
+    // loading = false;
+    // update();
+    //
   }
 
+
+  Future insertDataToFirestore(String tripId , String driverToken , String lat , String lng) async {
+    DateTime dateTime = DateTime.now();
+    String dateString = DateFormat('dd-MM-yyyy - kk:mm').format(dateTime);
+    Map<String, dynamic> map = {};
+    map['TripId'] = tripId;
+    map['Lat'] = lat;
+    map['Lng'] = lng;
+    map['driverToken'] = driverToken;
+    map['DateTime'] = dateString;
+
+
+    FirebaseFirestore firestore = FirebaseFirestore.instance;
+    CollectionReference collectionReference =
+    firestore.collection('location');
+    await collectionReference.doc().update(map).then((value) {
+      log('Upload Success');
+      return true;
+    });
+  }
 }
