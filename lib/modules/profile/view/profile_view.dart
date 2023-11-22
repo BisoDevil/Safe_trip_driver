@@ -32,7 +32,7 @@ class ProfileView extends GetView<ProfileController> {
             CustomListTile(
               leadingIcon: Icons.language_rounded,
               title: 'language'.tr,
-              onTap: () {
+              onTap: () async {
                 controller.showLanguageSettings();
               },
               color: Colors.white,

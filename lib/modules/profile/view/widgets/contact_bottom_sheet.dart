@@ -12,15 +12,14 @@ class ContactUsBottomSheet extends StatelessWidget {
     return Container(
       width: 100.w,
       height: 40.h,
-      color: AppColors.scaffoldBackgroundColor,
       alignment: Alignment.center,
       child: Padding(
-        padding: const EdgeInsets.symmetric(vertical: AppPaddings.mainScreenVerticalPadding),
-        child: Column(
-          mainAxisAlignment: MainAxisAlignment.center,
+        padding: const EdgeInsets.symmetric(vertical: AppPaddings.mainScreenVerticalPadding , horizontal: AppPaddings.mainScreenHorizontalPadding),
+        child: ListView(
+         // mainAxisAlignment: MainAxisAlignment.center,
           children: [
             Text('contact_us'.tr , style: regularStyle(AppFontSize.large, AppColors.inactiveTextColor, getFontFamilyFromLanguageCode()),),
-            const Spacer(),
+            SizedBox(height: 3.h,),
             CustomListTile(
                 leadingIcon: Icons.phone,
                 title: contactUsModel.phone,
@@ -40,6 +39,30 @@ class ContactUsBottomSheet extends StatelessWidget {
             CustomListTile(
                 leadingIcon: Icons.facebook_outlined,
                 title: contactUsModel.facebook,
+                onTap: (){},
+                color: Colors.white,
+                trailing: false,
+                logout: true
+            ),
+            CustomListTile(
+                leadingIcon: Icons.facebook_outlined,
+                title: contactUsModel.twitter,
+                onTap: (){},
+                color: Colors.white,
+                trailing: false,
+                logout: true
+            ),
+            CustomListTile(
+                leadingIcon: Icons.facebook_outlined,
+                title: contactUsModel.instagram,
+                onTap: (){},
+                color: Colors.white,
+                trailing: false,
+                logout: true
+            ),
+            CustomListTile(
+                leadingIcon: Icons.facebook_outlined,
+                title: contactUsModel.linkedin,
                 onTap: (){},
                 color: Colors.white,
                 trailing: false,
