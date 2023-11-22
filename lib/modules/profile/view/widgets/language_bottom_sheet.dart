@@ -1,6 +1,3 @@
-
-import 'dart:developer';
-
 import 'package:safe_trip_driver_app/core/widgets/loading.dart';
 import 'package:safe_trip_driver_app/index.dart';
 import 'package:safe_trip_driver_app/modules/profile/controller/profile_controller.dart';
@@ -14,7 +11,6 @@ class LanguageBottomSheet extends GetView<ProfileController> {
     return Container(
       width: 100.w,
       height: 30.h,
-      color: AppColors.scaffoldBackgroundColor,
       alignment: Alignment.center,
       child: GetBuilder<ProfileController>(
         builder: (profileController){ {
@@ -23,10 +19,10 @@ class LanguageBottomSheet extends GetView<ProfileController> {
               child: Loading(),
             );
           }else {
-            return Column(
-              mainAxisAlignment: MainAxisAlignment.center,
+            return ListView(
+                padding: const EdgeInsets.symmetric(vertical: AppPaddings.mainScreenVerticalPadding , horizontal: AppPaddings.mainScreenHorizontalPadding),
               children: [
-                Text('language'.tr , style: regularStyle(AppFontSize.large, AppColors.inactiveTextColor, getFontFamilyFromLanguageCode()),),
+                Text('language'.tr , style: regularStyle(AppFontSize.xLarge, AppColors.inactiveTextColor, getFontFamilyFromLanguageCode()),),
                 CustomSelectableListTile(
                   title: 'English',
                   onTap: (){

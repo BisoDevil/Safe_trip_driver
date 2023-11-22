@@ -18,7 +18,7 @@ class ContactUsBottomSheet extends StatelessWidget {
         child: ListView(
          // mainAxisAlignment: MainAxisAlignment.center,
           children: [
-            Text('contact_us'.tr , style: regularStyle(AppFontSize.large, AppColors.inactiveTextColor, getFontFamilyFromLanguageCode()),),
+            Text('contact_us'.tr , style: regularStyle(AppFontSize.xLarge, AppColors.inactiveTextColor, getFontFamilyFromLanguageCode()),),
             SizedBox(height: 3.h,),
             CustomListTile(
                 leadingIcon: Icons.phone,

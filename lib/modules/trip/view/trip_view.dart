@@ -179,13 +179,13 @@ class TripView extends GetView<TripController> {
                             onPickedUpClicked: (){
                               tripController.onPickedUpClicked(
                                   tripController.studentsInTrip[index].studentId,
-                                  3, // trip.id TODO: TODO: change trip_id value from 3 to tripId variable
+                                  TripController.tripId,
                               );
                             },
                             onFailureClicked: (){
                               tripController.onFailureClicked(
                                 tripController.studentsInTrip[index].studentId,
-                                  3, // trip.id TODO: TODO: change trip_id value from 3 to tripId variable
+                                TripController.tripId,
                               );
                             },
                           enabled: trip.status == 'working' ? true : false,
