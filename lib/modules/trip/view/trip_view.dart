@@ -47,22 +47,7 @@ class TripView extends GetView<TripController> {
                                           trip,
                                         );
                                         Get.back();
-                                        Get.offNamed(
-                                            Routes.tripRoute ,
-                                              arguments: TripModel(
-                                                  id: trip.id,
-                                                  busId: trip.busId,
-                                                  passengerAvailable: trip.passengerAvailable,
-                                                  day: trip.day,
-                                                  timeStart: trip.timeStart,
-                                                  timeEnd: trip.timeEnd,
-                                                  actualTimeStart: trip.actualTimeStart,
-                                                  actualTimeEnd: trip.actualTimeEnd,
-                                                  status: 'working',
-                                                  route: trip.route,
-                                                  supervisor: trip.supervisor
-                                              )
-                                          );
+
                                       },
                                     ),
                                     cancel: CustomButton(

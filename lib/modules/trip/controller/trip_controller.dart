@@ -103,18 +103,35 @@ class TripController extends GetxController {
     log('speed : ${locationData.speed.toString()} ');
     await TripsRepo().changeTripState(driverToken, status, tripModel.id.toString());
 
-
     if(status == 'working'){
-
       LocationServices().insertDataToFirestore( tripModel.id.toString(), driverToken, locationData.latitude.toString(), locationData.longitude.toString() , locationData.speed.toString());
       log('data inserted successfully - first time');
       locationSubscription = location.onLocationChanged.listen((event) {
         LocationServices().updateDataToFirestore(tripModel.id.toString() , event.latitude.toString(), event.longitude.toString() , event.speed.toString());
         log('data updated successfully');
       });
+      Get.offAllNamed(
+          Routes.tripRoute ,
+          arguments: TripModel(
+              id: tripModel.id,
+              busId: tripModel.busId,
+              passengerAvailable: tripModel.passengerAvailable,
+              day: tripModel.day,
+              timeStart: tripModel.timeStart,
+              timeEnd: tripModel.timeEnd,
+              actualTimeStart: tripModel.actualTimeStart,
+              actualTimeEnd: tripModel.actualTimeEnd,
+              status: status,
+              route: tripModel.route,
+              supervisor: tripModel.supervisor
+          )
+      );
 
     }else {
       locationSubscription?.cancel();
+      Get.offAllNamed(
+          Routes.homeRoute ,
+      );
     }
     update();
   }

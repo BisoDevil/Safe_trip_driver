@@ -145,7 +145,7 @@ class StudentCard extends StatelessWidget {
                       ),
                     ],
                   ),
-                  studentModel.status != 'waiting' && enabled //  TODO: change " != " later to " == " to disable buttons when student status changed from "waiting" to "on the way" or "arrived"
+                  studentModel.status == 'waiting' && enabled //  TODO: change " != " later to " == " to disable buttons when student status changed from "waiting" to "on the way" or "arrived"
                       ? Padding(
                         padding: const EdgeInsets.only(top: AppPaddings.verticalPaddingBetween),
                         child: Row(
