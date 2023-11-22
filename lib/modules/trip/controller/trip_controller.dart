@@ -1,10 +1,13 @@
 import 'dart:async';
 import 'dart:developer';
+import 'package:safe_trip_driver_app/data/models/trip_model.dart';
 import 'package:safe_trip_driver_app/data/repositories/location_serveces.dart';
 import 'package:safe_trip_driver_app/index.dart';
 import '../../../data/models/student_model.dart';
 import '../../../data/repositories/student_repo.dart';
 import 'package:location/location.dart';
+
+import '../../../data/repositories/trips_repo.dart';
 
 class TripController extends GetxController {
   bool loading = false;
@@ -75,7 +78,7 @@ class TripController extends GetxController {
     update();
   }
 
-  changeTripStatus(String status,String tripId) async {
+  changeTripStatus(String status,TripModel tripModel) async {
     bool serviceEnabled;
     PermissionStatus permissionGranted;
     serviceEnabled = await location.serviceEnabled();
@@ -98,24 +101,22 @@ class TripController extends GetxController {
     log('latitude : ${locationData.latitude.toString()}');
     log('longitude : ${locationData.longitude.toString()}');
     log('speed : ${locationData.speed.toString()} ');
+    await TripsRepo().changeTripState(driverToken, status, tripModel.id.toString());
+
 
     if(status == 'working'){
-      LocationServices().insertDataToFirestore( tripId, driverToken, locationData.latitude.toString(), locationData.longitude.toString() , locationData.speed.toString());
+
+      LocationServices().insertDataToFirestore( tripModel.id.toString(), driverToken, locationData.latitude.toString(), locationData.longitude.toString() , locationData.speed.toString());
       log('data inserted successfully - first time');
       locationSubscription = location.onLocationChanged.listen((event) {
-        LocationServices().updateDataToFirestore(tripId , event.latitude.toString(), event.longitude.toString() , event.speed.toString());
+        LocationServices().updateDataToFirestore(tripModel.id.toString() , event.latitude.toString(), event.longitude.toString() , event.speed.toString());
         log('data updated successfully');
       });
+
     }else {
       locationSubscription?.cancel();
     }
-
-    // loading = true;
-    ///
-    // await TripsRepo().changeTripState(driverToken, status, tripId);
-    // loading = false;
-    // update();
-    //
+    update();
   }
 
 }

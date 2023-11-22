@@ -1,6 +1,8 @@
 import 'package:safe_trip_driver_app/data/models/route_model.dart';
 import 'package:safe_trip_driver_app/data/models/supervisor_model.dart';
 
+import '../../index.dart';
+@HiveType(typeId: 1)
 class TripModel {
 
   final int id;
@@ -11,7 +13,7 @@ class TripModel {
   final String timeEnd;
   final String actualTimeStart;
   final String actualTimeEnd;
-  final String status;
+  late final String status;
   final RouteModel route;
   final SupervisorModel supervisor;
 

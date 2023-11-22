@@ -44,9 +44,25 @@ class TripView extends GetView<TripController> {
                                       onClick: () {
                                         tripController.changeTripStatus(
                                           trip.status == 'not_yet' ? 'working' : 'finished',
-                                          trip.id.toString(),
+                                          trip,
                                         );
-                                        // Get.offAllNamed('/home_view');
+                                        Get.back();
+                                        Get.offNamed(
+                                            Routes.tripRoute ,
+                                              arguments: TripModel(
+                                                  id: trip.id,
+                                                  busId: trip.busId,
+                                                  passengerAvailable: trip.passengerAvailable,
+                                                  day: trip.day,
+                                                  timeStart: trip.timeStart,
+                                                  timeEnd: trip.timeEnd,
+                                                  actualTimeStart: trip.actualTimeStart,
+                                                  actualTimeEnd: trip.actualTimeEnd,
+                                                  status: 'working',
+                                                  route: trip.route,
+                                                  supervisor: trip.supervisor
+                                              )
+                                          );
                                       },
                                     ),
                                     cancel: CustomButton(
