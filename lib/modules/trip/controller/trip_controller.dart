@@ -129,7 +129,8 @@ class TripController extends GetxController {
 
     }else {
       locationSubscription?.cancel();
-      Get.offAllNamed(
+      Get.find<HomeController>().onInit();
+      Get.offNamed(
           Routes.homeRoute ,
       );
     }
