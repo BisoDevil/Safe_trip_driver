@@ -26,7 +26,9 @@ class HomeView extends GetView<HomeController> {
                       Get.toNamed(Routes.profileRoute);
                     },
                     child: CircleAvatar(
-                      radius: 10.w,
+                      // radius: 30,
+                      maxRadius: 30,
+                      minRadius: 20,
                       backgroundColor: AppColors.whiteTextColor,
                       backgroundImage:
                           NetworkImage(homeController.currentDriver.image),
@@ -44,14 +46,15 @@ class HomeView extends GetView<HomeController> {
             vertical: AppPaddings.mainScreenVerticalPadding,
             horizontal: AppPaddings.mainScreenHorizontalPadding,
           ),
-          child: GetBuilder<HomeController>(
-              builder: (homeController) {
+          child: GetBuilder<HomeController>(builder: (homeController) {
             if (homeController.loading == false) {
               return Column(
                 children: [
-                  WelcomeTitle(driverName: controller.currentDriver.name.split(' ')[0]),
-                  DriverCard(driver: controller.currentDriver,),
-
+                  WelcomeTitle(
+                      driverName: controller.currentDriver.name.split(' ')[0]),
+                  DriverCard(
+                    driver: controller.currentDriver,
+                  ),
                   controller.tripWorkingNow.isEmpty
                       ? Text(
                           'no_trips_working_now'.tr,
@@ -84,12 +87,11 @@ class HomeView extends GetView<HomeController> {
                                     })),
                           ],
                         ),
-
-
                   controller.todayNotStartedTrip.isNotEmpty
                       ? Padding(
-                        padding: const EdgeInsets.only(top: AppPaddings.verticalPaddingBetween),
-                        child: Column(
+                          padding: const EdgeInsets.only(
+                              top: AppPaddings.verticalPaddingBetween),
+                          child: Column(
                             children: [
                               Text(
                                 'trips_start_soon'.tr,
@@ -117,44 +119,43 @@ class HomeView extends GetView<HomeController> {
                                       })),
                             ],
                           ),
-                      )
+                        )
                       : const SizedBox(),
-
                   controller.tripFinishedToday.isNotEmpty
                       ? Padding(
-                    padding: const EdgeInsets.only(top: AppPaddings.verticalPaddingBetween),
-                    child: Column(
-                      children: [
-                        Text(
-                          'trips_finished_now'.tr,
-                          style: Theme.of(context).textTheme.titleMedium,
-                        ),
-                        SizedBox(
-                            width: 100.w,
-                            child: ListView.builder(
-                                shrinkWrap: true,
-                                physics:
-                                const NeverScrollableScrollPhysics(),
-                                itemCount: homeController
-                                    .tripFinishedToday.length,
-                                itemBuilder:
-                                    (BuildContext context, int index) {
-                                  return CustomOnewayTripCard(
-                                      trip: homeController
-                                          .tripFinishedToday[index],
-                                      onTap: () {
-                                        homeController.onTripCardClicked(
-                                            homeController
-                                                .tripFinishedToday[
-                                            index]);
-                                      });
-                                })),
-                      ],
-                    ),
-                  )
+                          padding: const EdgeInsets.only(
+                              top: AppPaddings.verticalPaddingBetween),
+                          child: Column(
+                            children: [
+                              Text(
+                                'trips_finished_now'.tr,
+                                style: Theme.of(context).textTheme.titleMedium,
+                              ),
+                              SizedBox(
+                                  width: 100.w,
+                                  child: ListView.builder(
+                                      shrinkWrap: true,
+                                      physics:
+                                          const NeverScrollableScrollPhysics(),
+                                      itemCount: homeController
+                                          .tripFinishedToday.length,
+                                      itemBuilder:
+                                          (BuildContext context, int index) {
+                                        return CustomOnewayTripCard(
+                                            trip: homeController
+                                                .tripFinishedToday[index],
+                                            onTap: () {
+                                              homeController.onTripCardClicked(
+                                                  homeController
+                                                          .tripFinishedToday[
+                                                      index]);
+                                            });
+                                      })),
+                            ],
+                          ),
+                        )
                       : const SizedBox(),
-
-                  ],
+                ],
               );
             } else {
               return const Center(

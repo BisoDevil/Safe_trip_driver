@@ -18,6 +18,7 @@ ThemeData getAppTheme() {
     disabledColor: AppColors.disabledColor,
     scaffoldBackgroundColor: AppColors.scaffoldBackgroundColor,
     splashColor: AppColors.lightPrimaryColor,
+    useMaterial3: false,
 
     /// font family
     fontFamily: getFontFamilyFromLanguageCode(),
@@ -108,8 +109,7 @@ ThemeData getAppTheme() {
             shape: MaterialStateProperty.all(RoundedRectangleBorder(
               borderRadius: BorderRadius.circular(AppRadius.inputBorderRadius),
             )),
-            padding: MaterialStateProperty.all(const EdgeInsets.symmetric(
-                vertical: 4)
-            ))),
+            padding: MaterialStateProperty.all(
+                const EdgeInsets.symmetric(vertical: 4)))),
   );
 }

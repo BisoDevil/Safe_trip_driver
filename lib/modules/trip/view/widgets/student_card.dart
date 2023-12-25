@@ -13,7 +13,7 @@ class StudentCard extends StatelessWidget {
       required this.onPickedUpClicked,
       required this.onFailureClicked,
       required this.studentModel,
-        required this.enabled});
+      required this.enabled});
 
   @override
   Widget build(BuildContext context) {
@@ -93,13 +93,13 @@ class StudentCard extends StatelessWidget {
                         children: [
                           IconButton(
                             onPressed: () async {
-                              await launchUrl(
-                                  Uri(
-                                    scheme: 'tel',
-                                    path:
-                                        '01023668557', // TODO: change my phone number to student phone number
-                                  ),
-                                  mode: LaunchMode.externalApplication);
+                              // await launchUrl(
+                              //     Uri(
+                              //       scheme: 'tel',
+                              //       path:
+                              //           studentModel.student., // TODO: change my phone number to student phone number
+                              //     ),
+                              //     mode: LaunchMode.externalApplication);
                             },
                             icon: const Icon(Icons.phone),
                             color: AppColors.primaryColor,
@@ -147,20 +147,20 @@ class StudentCard extends StatelessWidget {
                   ),
                   studentModel.status == 'waiting' && enabled
                       ? Padding(
-                        padding: const EdgeInsets.only(top: AppPaddings.verticalPaddingBetween),
-                        child: Row(
+                          padding: const EdgeInsets.only(
+                              top: AppPaddings.verticalPaddingBetween),
+                          child: Row(
                             children: [
                               Expanded(
                                 child: CustomButton(
                                     buttonTextLabel: 'failure_button'.tr,
                                     buttonBackgroundColor: AppColors.errorColor,
                                     onClick: () {
-                                      if (enabled){
+                                      if (enabled) {
                                         onFailureClicked();
-                                      }else{
+                                      } else {
                                         Get.snackbar('title', 'message');
                                       }
-
                                     }),
                               ),
                               SizedBox(
@@ -169,18 +169,19 @@ class StudentCard extends StatelessWidget {
                               Expanded(
                                 child: CustomButton(
                                     buttonTextLabel: 'picked_up_button'.tr,
-                                    buttonBackgroundColor: AppColors.successColor,
+                                    buttonBackgroundColor:
+                                        AppColors.successColor,
                                     onClick: () {
-                                      if (enabled){
+                                      if (enabled) {
                                         onPickedUpClicked();
-                                      }else{
+                                      } else {
                                         Get.snackbar('title', 'message');
                                       }
                                     }),
                               ),
                             ],
                           ),
-                      )
+                        )
                       : const SizedBox.shrink(),
                 ],
               ),
@@ -200,7 +201,8 @@ class StudentCard extends StatelessWidget {
                                 : AppColors.primaryColor,
                         borderRadius: const BorderRadius.only(
                           topRight: Radius.circular(AppRadius.cardBorderRadius),
-                          bottomLeft: Radius.circular(AppRadius.cardBorderRadius),
+                          bottomLeft:
+                              Radius.circular(AppRadius.cardBorderRadius),
                         ) // green shaped
                         ),
                     child: Text(

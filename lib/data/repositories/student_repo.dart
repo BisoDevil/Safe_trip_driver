@@ -13,9 +13,9 @@ class StudentRepo {
   Future<List<StudentModel>> getStudentsInTrip(
       String driverToken, int tripId) async {
     headers['authorization'] = 'Bearer $driverToken';
+
     http.Response response = await http.get(
-      Uri.parse(
-          '${AppEndPoints.studentsInTrip}/$tripId'), // TODO: change trip_id value to 3 to get students fake data
+      Uri.parse('${AppEndPoints.studentsInTrip}/$tripId'),
       headers: headers,
     );
 
